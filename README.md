@@ -8,7 +8,7 @@ Super easy, efficient and agnostic state management for Javascript
 
 # Install
 
-```shell
+```javascript
 $ yarn add metaphasejs // Yarn
 
 $ npm install metaphasejs // NPM

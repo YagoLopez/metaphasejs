@@ -1,8 +1,8 @@
 {
   "name": "metaphasejs",
   "version": "0.9.0",
-  "description": "",
-  "keywords": [],
+  "description": "Super easy efficient and agnostic state management for Javascript",
+  "keywords": ["state management", "react", "redux", "state", "management", "manager", "reactjs"],
   "main": "dist/metaphasejs.umd.js",
   "module": "dist/metaphasejs.es5.js",
   "typings": "dist/types/metaphasejs.d.ts",

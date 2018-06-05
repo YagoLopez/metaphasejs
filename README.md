@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/YagoLopez/metaphasejs.svg?branch=master)](https://travis-ci.org/YagoLopez/metaphasejs) [![Greenkeeper badge](https://badges.greenkeeper.io/YagoLopez/metaphasejs.svg)](https://greenkeeper.io/)
+
 # MetaphaseJS
 
 Super easy, efficient and agnostic state management for Javascript

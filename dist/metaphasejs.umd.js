@@ -102,7 +102,6 @@
   /* Get query string parameters for modern browsers. Doesnt work with Jest. A shim is needed */
   // const urlParams = new URLSearchParams(window.location.search);
   // let urlLogParam = urlParams.get('log');
-  //# sourceMappingURL=yago.logger.js.map
 
   //todo: usar whatg-fetch en lugar de fetch para compatibilidad navegador
   var sql = require('sql.js');
@@ -195,7 +194,6 @@
       }
   };
   console.clear();
-  //# sourceMappingURL=database.js.map
 
   /*! *****************************************************************************
   Copyright (c) Microsoft Corporation. All rights reserved.
@@ -269,7 +267,6 @@
   exports.query().__proto__.getOne = function () {
       return exports.db.execQuery(this)[0];
   };
-  //# sourceMappingURL=query.builder.js.map
 
   var Base = /** @class */ (function () {
       function Base() {
@@ -316,7 +313,6 @@
       };
       return Base;
   }());
-  //# sourceMappingURL=base.js.map
 
   var NotSavedModelError = /** @class */ (function (_super) {
       __extends(NotSavedModelError, _super);
@@ -358,7 +354,6 @@
       }
       return InvalidColumnData;
   }(Error));
-  //# sourceMappingURL=exceptions.js.map
 
   var Model = /** @class */ (function (_super) {
       __extends(Model, _super);
@@ -473,7 +468,6 @@
       };
       return Model;
   }(Base));
-  //# sourceMappingURL=model.js.map
 
   //todo: funcionamiento para tipo de columna boolean. Poder usar "true/false"
   var Column = /** @class */ (function () {
@@ -563,7 +557,6 @@
       };
       return Column;
   }());
-  //# sourceMappingURL=column.js.map
 
   /**
    * Manages a collection of models (rows in a db table)
@@ -718,7 +711,6 @@
       };
       return Collection;
   }(Base));
-  //# sourceMappingURL=collection.js.map
 
   var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -1913,9 +1905,6 @@
       }
       return result;
   }
-  //# sourceMappingURL=decorators.js.map
-
-  //# sourceMappingURL=types.js.map
 
   // Import here Polyfills if needed. Recommended core-js (npm i -D core-js)
 

@@ -2,6 +2,8 @@
 
 # MetaphaseJS
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/YagoLopez/metaphasejs.svg)](https://greenkeeper.io/)
+
 Super easy, efficient and agnostic state management for Javascript
 
 # Demo

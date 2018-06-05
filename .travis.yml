@@ -12,7 +12,7 @@ notifications:
 node_js:
   - node
 script:
-  - yarn build
+  - yarn test && build
 #  - npm run test:prod && npm run build
 
 # after_success:

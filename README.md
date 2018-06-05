@@ -6,7 +6,7 @@ Super easy, efficient and agnostic state management for Javascript
 
 # Demo
 
-:arrow_right: [Link](https://github.com/YagoLopez/metaphasejs-react-demo)
+➔ [Link](https://github.com/YagoLopez/metaphasejs-react-demo)
 
 # Install
 
@@ -18,6 +18,6 @@ $ npm install metaphasejs // NPM
 
 
 
-## TODO
+## API Docs
 
-Docs
+➔ [Link](https://yagolopez.js.org/metaphasejs/docs/index.html)

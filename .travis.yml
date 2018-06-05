@@ -13,8 +13,8 @@ node_js:
   - node
 script:
 #  - npm run test:prod && npm run build
-  - npm run test:prod
+  - yarn test:prod
 after_success:
-  - npm run report-coverage
-  - npm run deploy-docs
-  - npm run semantic-release
+#  - npm run report-coverage
+#  - npm run deploy-docs
+#  - npm run semantic-release

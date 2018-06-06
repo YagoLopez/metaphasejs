@@ -1846,10 +1846,12 @@
       });
   })(Reflect$1 || (Reflect$1 = {}));
 
+  //todo: (revisar) usando solo como tipo DBtype no compila usando el decorador @columna({dbType: DBtype.TEXT)
+  //Se une al tipo DBtype el tipo any como solucion temporal
   function column(colData) {
       return function (target, propName) {
           var dbType;
-          var propType = Reflect.getMetadata("design:type", target, propName);
+          var propType = Reflect.getMetadata('design:type', target, propName);
           target.constructor.columns = target.constructor.columns || [];
           //todo: de la misma forma que se añade una propiedad "columns" al constructor del modelo
           //se podria añadir una funcion "hasMany()" usando un decorator para definir relaciones entre modelos
@@ -1862,7 +1864,7 @@
           }
           target.constructor.columns.push(new Column({
               name: propName,
-              dbType: colData && colData.dbType || dbType,
+              dbType: (colData && colData.dbType) || dbType,
               size: colData && colData.size,
               unique: colData && colData.unique,
               notNullable: colData && colData.notNullable,
@@ -1907,6 +1909,7 @@
   }
 
   //todo: review test config to avoid dupes
+  //todo: DBtype deberia estar en un fichero raiz metaphasejs.d.ts para ser accesible al exterior
 
   exports.loadDbFromFile = loadDbFromFile;
   exports.saveDbToFile = saveDbToFile;

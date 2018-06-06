@@ -1,5 +1,5 @@
-import { DBtype } from "./types";
-import { TableBuilder } from "knex";
+import { DBtype } from './types';
+import { TableBuilder } from 'knex';
 export declare const enum ColumnAction {
     Cascade = "cascade",
     SetNull = "set null",
@@ -9,7 +9,7 @@ export declare const enum ColumnAction {
 }
 export interface IColumn {
     name?: string;
-    dbType?: DBtype;
+    dbType?: DBtype | any;
     size?: number;
     foreignKey?: boolean;
     relatedTable?: string;

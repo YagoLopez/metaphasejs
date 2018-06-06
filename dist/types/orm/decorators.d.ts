@@ -1,7 +1,7 @@
-import "reflect-metadata";
-import { DBtype } from "./types";
+import 'reflect-metadata';
+import { DBtype } from './types';
 export declare function column(colData?: {
-    dbType?: DBtype;
+    dbType?: DBtype | any;
     size?: number;
     unique?: boolean;
     notNullable?: boolean;

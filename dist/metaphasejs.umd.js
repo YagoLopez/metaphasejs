@@ -1906,7 +1906,7 @@
       return result;
   }
 
-  // Import here Polyfills if needed. Recommended core-js (npm i -D core-js)
+  //todo: review test config to avoid dupes
 
   exports.loadDbFromFile = loadDbFromFile;
   exports.saveDbToFile = saveDbToFile;

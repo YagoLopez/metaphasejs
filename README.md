@@ -29,4 +29,4 @@ yarn/npm test
 
 ## Notes
 
-- At this moment there is not pollyfills for old browsers, but it will be in the future.
+- At this moment there are not pollyfills for old browsers, but it will be in the future.

@@ -1900,7 +1900,7 @@ function getDBTypeFromPropType(jsPropType) {
     return result;
 }
 
-// Import here Polyfills if needed. Recommended core-js (npm i -D core-js)
+//todo: review test config to avoid dupes
 
 export { db, loadDbFromFile, saveDbToFile, Model, Collection, Column, column, getDBTypeFromPropType, NotSavedModelError, InvalidPropTypeError, InvalidColumnData, queryBuilder as query, getUrlParameter, updateQueryStringParameter, disableConsole, LOG_FORMAT, logQuery, log };
 //# sourceMappingURL=metaphasejs.es5.js.map

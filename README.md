@@ -9,16 +9,24 @@ Super easy, efficient and agnostic state management for Javascript
 
 ➔ [Link](https://github.com/YagoLopez/metaphasejs-react-demo)
 
-# Install
+# Usage
 
 ```javascript
-$ yarn add metaphasejs // Yarn
+// Install
+yarn add metaphasejs // Yarn
+npm install metaphasejs // NPM
 
-$ npm install metaphasejs // NPM
+// Build
+yarn/npm build
+
+// Test
+yarn/npm test
 ```
-
-
 
 ## API Docs
 
 ➔ [Link](https://yagolopez.js.org/metaphasejs/docs/index.html)
+
+## Notes
+
+- At this moment there is not pollyfills for old browsers, but it will be in the future.

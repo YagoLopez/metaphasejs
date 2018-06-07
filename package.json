@@ -1,6 +1,6 @@
 {
   "name": "metaphasejs",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Super easy, efficient and agnostic state management for Javascript",
   "keywords": [
     "state management",
@@ -41,7 +41,7 @@
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
-    "dependencies-analysis": "source-map-explorer --html ./dist/metaphasejs.es5.js > dependencies-analysis.html"
+    "analysis": "source-map-explorer --html ./dist/metaphasejs.es5.js > analysis.html"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [

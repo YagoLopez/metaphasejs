@@ -8,7 +8,7 @@ export declare function column(colData?: {
     index?: boolean;
 }): (target: any, propName: string) => void;
 /**
- * Calculate SQLite type from javascript model prop type.
+ * Maps javascript model prop type to SQLite column type.
  *
  * Type correspondence:
  * ---------------------------------

@@ -5,5 +5,14 @@ export * from './orm/column';
 export * from './orm/decorators';
 export * from './orm/exceptions';
 export * from './orm/query.builder';
-export * from './orm/types';
 export * from './orm/yago.logger';
+export declare enum DBtype {
+    INTEGER = "integer",
+    REAL = "real",
+    BOOLEAN = "integer",
+    STRING = "varchar",
+    TEXT = "text",
+    DATE = "varchar",
+    BLOB = "blob",
+    NULL = "null"
+}

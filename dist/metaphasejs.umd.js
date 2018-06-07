@@ -1873,7 +1873,7 @@
       };
   }
   /**
-   * Calculate SQLite type from javascript model prop type.
+   * Maps javascript model prop type to SQLite column type.
    *
    * Type correspondence:
    * ---------------------------------
@@ -1908,8 +1908,17 @@
       return result;
   }
 
-  //todo: review test config to avoid dupes
-  //todo: DBtype deberia estar en un fichero raiz metaphasejs.d.ts para ser accesible al exterior
+  //todo: comentar funciones para que aparezcan en api doc
+  (function (DBtype) {
+      DBtype["INTEGER"] = "integer";
+      DBtype["REAL"] = "real";
+      DBtype["BOOLEAN"] = "integer";
+      DBtype["STRING"] = "varchar";
+      DBtype["TEXT"] = "text";
+      DBtype["DATE"] = "varchar";
+      DBtype["BLOB"] = "blob";
+      DBtype["NULL"] = "null"; // null is reserved word
+  })(exports.DBtype || (exports.DBtype = {}));
 
   exports.loadDbFromFile = loadDbFromFile;
   exports.saveDbToFile = saveDbToFile;

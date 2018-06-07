@@ -1867,7 +1867,7 @@ function column(colData) {
     };
 }
 /**
- * Calculate SQLite type from javascript model prop type.
+ * Maps javascript model prop type to SQLite column type.
  *
  * Type correspondence:
  * ---------------------------------
@@ -1902,8 +1902,18 @@ function getDBTypeFromPropType(jsPropType) {
     return result;
 }
 
-//todo: review test config to avoid dupes
-//todo: DBtype deberia estar en un fichero raiz metaphasejs.d.ts para ser accesible al exterior
+//todo: comentar funciones para que aparezcan en api doc
+var DBtype;
+(function (DBtype) {
+    DBtype["INTEGER"] = "integer";
+    DBtype["REAL"] = "real";
+    DBtype["BOOLEAN"] = "integer";
+    DBtype["STRING"] = "varchar";
+    DBtype["TEXT"] = "text";
+    DBtype["DATE"] = "varchar";
+    DBtype["BLOB"] = "blob";
+    DBtype["NULL"] = "null"; // null is reserved word
+})(DBtype || (DBtype = {}));
 
-export { db, loadDbFromFile, saveDbToFile, Model, Collection, Column, column, getDBTypeFromPropType, NotSavedModelError, InvalidPropTypeError, InvalidColumnData, queryBuilder as query, getUrlParameter, updateQueryStringParameter, disableConsole, LOG_FORMAT, logQuery, log };
+export { DBtype, db, loadDbFromFile, saveDbToFile, Model, Collection, Column, column, getDBTypeFromPropType, NotSavedModelError, InvalidPropTypeError, InvalidColumnData, queryBuilder as query, getUrlParameter, updateQueryStringParameter, disableConsole, LOG_FORMAT, logQuery, log };
 //# sourceMappingURL=metaphasejs.es5.js.map

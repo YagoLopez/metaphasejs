@@ -6,27 +6,21 @@ import { InvalidPropTypeError } from './exceptions'
 //todo: (revisar) usando solo como tipo DBtype no compila usando el decorador @columna({dbType: DBtype.TEXT)
 //Se une al tipo DBtype el tipo any como solucion temporal
 
-export function column(colData?: {
-  dbType?: DBtype | any
-  size?: number
-  unique?: boolean
-  notNullable?: boolean
-  index?: boolean
-}) {
+export function column(colData?: {dbType?: DBtype | any, size?: number, unique?: boolean, notNullable?: boolean, index?: boolean}) {
   return function(target: any, propName: string) {
-    let dbType: DBtype
-    const propType = Reflect.getMetadata('design:type', target, propName)
+    let dbType: DBtype;
+    const propType = Reflect.getMetadata('design:type', target, propName);
 
-    target.constructor.columns = target.constructor.columns || []
+    target.constructor.columns = target.constructor.columns || [];
 
     //todo: de la misma forma que se añade una propiedad "columns" al constructor del modelo
     //se podria añadir una funcion "hasMany()" usando un decorator para definir relaciones entre modelos
     //Por ejemplo @hasMany()Post podria generar target.constructor.hasMany([Post])
 
     if (propType) {
-      dbType = getDBTypeFromPropType(propType.name)
+      dbType = getDBTypeFromPropType(propType.name);
     } else {
-      throw new InvalidPropTypeError(propType)
+      throw new InvalidPropTypeError(propType);
     }
 
     target.constructor.columns.push(
@@ -43,7 +37,7 @@ export function column(colData?: {
 }
 
 /**
- * Calculate SQLite type from javascript model prop type.
+ * Maps javascript model prop type to SQLite column type.
  *
  * Type correspondence:
  * ---------------------------------
@@ -61,17 +55,17 @@ export function column(colData?: {
  * @return DBtype SQLite type
  */
 export function getDBTypeFromPropType(jsPropType?: string): DBtype {
-  jsPropType = jsPropType && jsPropType.toLowerCase()
-  let result: DBtype
+  jsPropType = jsPropType && jsPropType.toLowerCase();
+  let result: DBtype;
 
   if (jsPropType === 'string') {
-    result = DBtype.STRING
+    result = DBtype.STRING;
   } else if (jsPropType === 'number') {
-    result = DBtype.INTEGER
+    result = DBtype.INTEGER;
   } else if (jsPropType === 'null') {
-    result = DBtype.NULL
+    result = DBtype.NULL;
   } else {
-    throw new InvalidPropTypeError(jsPropType)
+    throw new InvalidPropTypeError(jsPropType);
   }
-  return result
+  return result;
 }

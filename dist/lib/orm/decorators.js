@@ -31,7 +31,7 @@ function column(colData) {
 }
 exports.column = column;
 /**
- * Calculate SQLite type from javascript model prop type.
+ * Maps javascript model prop type to SQLite column type.
  *
  * Type correspondence:
  * ---------------------------------

@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/YagoLopez/metaphasejs.svg?branch=master)](https://travis-ci.org/YagoLopez/metaphasejs) [![Greenkeeper badge](https://badges.greenkeeper.io/YagoLopez/metaphasejs.svg)](https://greenkeeper.io/)
-[![Maintainability](https://api.codeclimate.com/v1/badges/c264e58f56102a22476c/maintainability)](https://codeclimate.com/github/YagoLopez/metaphasejs/maintainability)[![Known Vulnerabilities](https://snyk.io/test/github/YagoLopez/metaphasejs/badge.svg?targetFile=package.json)](https://snyk.io/test/github/YagoLopez/metaphasejs?targetFile=package.json)[![Coverage Status](https://coveralls.io/repos/github/YagoLopez/metaphasejs/badge.svg?branch=master)](https://coveralls.io/github/YagoLopez/metaphasejs?branch=master)
+ [![Maintainability](https://api.codeclimate.com/v1/badges/c264e58f56102a22476c/maintainability)](https://codeclimate.com/github/YagoLopez/metaphasejs/maintainability) [![Known Vulnerabilities](https://snyk.io/test/github/YagoLopez/metaphasejs/badge.svg?targetFile=package.json)](https://snyk.io/test/github/YagoLopez/metaphasejs?targetFile=package.json) [![Coverage Status](https://coveralls.io/repos/github/YagoLopez/metaphasejs/badge.svg?branch=master)](https://coveralls.io/github/YagoLopez/metaphasejs?branch=master)
 
 # MetaphaseJS
 

@@ -30,7 +30,7 @@ yarn / npm test
 
 ## Packages Analysis
 
-- [Link](https://yagolopez.js.org/metaphasejs/analysis.html)
+- Without gzip compression: [Link](https://yagolopez.js.org/metaphasejs/analysis.html)
 
 ## Test Coverage
 

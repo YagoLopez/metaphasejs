@@ -6,7 +6,7 @@
  * Pass a 'false' value to avoid logger. This is the desired behaviour for production.
  * @type {string}
  */
-const DEFAULT_LOG_STATE: string = 'false'
+const DEFAULT_LOG_STATE: string = 'false';
 
 /**
  * Gets url query parameter form URL
@@ -14,13 +14,11 @@ const DEFAULT_LOG_STATE: string = 'false'
  * @returns {string}
  */
 export const getUrlParameter = (paramName: string) => {
-  paramName = paramName.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]')
-  const regex = new RegExp('[\\?&]' + paramName + '=([^&#]*)')
-  const results = regex.exec(location.search)
-  return results === null
-    ? ''
-    : decodeURIComponent(results[1].replace(/\+/g, ' '))
-}
+  paramName = paramName.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  const regex = new RegExp('[\\?&]' + paramName + '=([^&#]*)');
+  const results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
 
 /**
  * Update query string parameter
@@ -29,23 +27,20 @@ export const getUrlParameter = (paramName: string) => {
  * @param {string} value
  * @return {string}
  */
-export function updateQueryStringParameter(
-  uri: string,
-  key: string,
-  value: string
-) {
-  const re = new RegExp('([?&])' + key + '=.*?(&|$)', 'i')
-  const separator = uri.indexOf('?') !== -1 ? '&' : '?'
+export function updateQueryStringParameter(uri: string, key: string, value: string) {
+  const re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+  const separator = uri.indexOf('?') !== -1 ? "&" : "?";
   if (uri.match(re)) {
-    return uri.replace(re, '$1' + key + '=' + value + '$2')
-  } else {
-    return uri + separator + key + '=' + value
+    return uri.replace(re, '$1' + key + "=" + value + '$2');
+  }
+  else {
+    return uri + separator + key + "=" + value;
   }
 }
 
 // Variable that holds the looger state
-let urlLogParam = getUrlParameter('logger')
-urlLogParam = urlLogParam || DEFAULT_LOG_STATE
+let urlLogParam = getUrlParameter('logger');
+urlLogParam = urlLogParam || DEFAULT_LOG_STATE;
 
 /**
  * Disables console output messages (except error).
@@ -53,13 +48,13 @@ urlLogParam = urlLogParam || DEFAULT_LOG_STATE
  */
 export function disableConsole(): void {
   // console = console || {};
-  console.log = () => {}
-  console.table = () => {}
-  console.warn = () => {}
+  console.log = () => {};
+  console.table = () => {};
+  console.warn = () => {};
 }
 
 if (urlLogParam === 'false') {
-  disableConsole()
+  disableConsole();
 }
 
 /**
@@ -68,11 +63,10 @@ if (urlLogParam === 'false') {
  * @type {Object}
  */
 export const LOG_FORMAT = {
-  BLUE:
-    'background: ghostwhite; color: cornflowerblue; font-size: 12px; font-weight: bold',
+  BLUE: 'background: ghostwhite; color: cornflowerblue; font-size: 12px; font-weight: bold',
   ORANGE: 'color: orange',
   BG_YELLOW: 'background-color: yellow'
-}
+};
 
 /**
  * Logs sql query strings and query results, appling two formats:
@@ -81,16 +75,14 @@ export const LOG_FORMAT = {
  * @param {string} msg
  * @param {"query" | "result" | string} format
  */
-export function logQuery(
-  msg: string,
-  format: 'query' | 'result' | string
-): void {
+export function logQuery(msg: string, format: 'query' | 'result' | string): void {
   if (format === 'query') {
-    const format = LOG_FORMAT.BLUE
-    console.log(`%c${msg}`, format)
-  } else if (format === 'result') {
-    const format = LOG_FORMAT.ORANGE
-    console.log(`%c✅ ${msg}`, format)
+    const format = LOG_FORMAT.BLUE;
+    console.log(`%c${msg}`, format);
+  } else
+  if (format === 'result') {
+    const format = LOG_FORMAT.ORANGE;
+    console.log(`%c✅ ${msg}`, format);
   } else {
     console.log(`%c${msg}`, format)
   }
@@ -102,7 +94,7 @@ export function logQuery(
  * @param {string} format
  */
 export function log(msg: string, format: string): void {
-  console.log(`%c${msg}`, format)
+  console.log(`%c${msg}`, format);
 }
 
 /* Using a global variable: ********************************** */

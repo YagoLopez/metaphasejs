@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -8,6 +9,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+Object.defineProperty(exports, "__esModule", { value: true });
 //todo: poder ejecutar consulta sql que conste de varias sentencias en varias lineas
 //todo: quitar el plural de las tablas = tableName();
 //todo: hacer fn para paginacion. params: limit (rows per page), offset: (num. pag)
@@ -19,11 +21,11 @@ var __extends = (this && this.__extends) || (function () {
 //todo: documentar funciones
 //todo: fn borrar tabla
 //todo: implementar logger usando decorators
-import { db } from "./database";
-import { query } from "./query.builder";
-import { Column } from "./column";
-import { Base } from "./base";
-import { Model } from "./model";
+var database_1 = require("./database");
+var query_builder_1 = require("./query.builder");
+var column_1 = require("./column");
+var base_1 = require("./base");
+var model_1 = require("./model");
 /**
  * Manages a collection of models (rows in a db table)
  * It follows Repository pattern
@@ -41,11 +43,11 @@ var Collection = /** @class */ (function (_super) {
     }
     Collection.prototype.createTable = function (tableName, columns) {
         var _this = this;
-        var createTableQuery = query.schema.raw('PRAGMA foreign_keys=ON')
+        var createTableQuery = query_builder_1.query.schema.raw('PRAGMA foreign_keys=ON')
             .dropTableIfExists(tableName).createTable(tableName, function (tableBuilder) {
             _this.createColumns(columns, tableBuilder);
         });
-        db.runQuery(createTableQuery);
+        database_1.db.runQuery(createTableQuery);
     };
     //todo: hacer static
     Collection.prototype.createColumns = function (columns, tableBuilder) {
@@ -61,13 +63,13 @@ var Collection = /** @class */ (function (_super) {
      */
     Collection.prototype.createModelInstances = function (pojos) {
         for (var i = 0; i < pojos.length; i++) {
-            pojos[i] = Model.create(pojos[i], this.model);
+            pojos[i] = model_1.Model.create(pojos[i], this.model);
         }
         return pojos;
     };
     Collection.prototype.getAll = function (load) {
         if (load === void 0) { load = { children: false }; }
-        var result = db.execQuery("select * from " + this.tableName());
+        var result = database_1.db.execQuery("select * from " + this.tableName());
         var models = this.createModelInstances(result);
         console.table(result);
         if (load.children) {
@@ -80,7 +82,7 @@ var Collection = /** @class */ (function (_super) {
     };
     Collection.prototype.getById = function (id, load) {
         if (load === void 0) { load = { children: false }; }
-        var result = db.execQuery("select * from " + this.tableName() + " where id=" + id)[0];
+        var result = database_1.db.execQuery("select * from " + this.tableName() + " where id=" + id)[0];
         var model = new this.model(result);
         console.log(model);
         if (load.children) {
@@ -91,7 +93,7 @@ var Collection = /** @class */ (function (_super) {
     Collection.prototype.getByFilter = function (filter, columns, load) {
         if (columns === void 0) { columns = []; }
         if (load === void 0) { load = { children: false }; }
-        var result = query.select(columns).from(this.tableName()).where(filter).run();
+        var result = query_builder_1.query.select(columns).from(this.tableName()).where(filter).run();
         console.table(result);
         if (load.children) {
             var models = this.createModelInstances(result);
@@ -105,7 +107,7 @@ var Collection = /** @class */ (function (_super) {
     Collection.prototype.getByOperator = function (termA, operator, termB, columns, load) {
         if (columns === void 0) { columns = []; }
         if (load === void 0) { load = { children: false }; }
-        var result = query.select(columns).from(this.tableName()).where(termA, operator, termB).run();
+        var result = query_builder_1.query.select(columns).from(this.tableName()).where(termA, operator, termB).run();
         console.table(result);
         if (load.children) {
             var models = this.createModelInstances(result);
@@ -122,7 +124,7 @@ var Collection = /** @class */ (function (_super) {
     Collection.prototype.createColumnRelation = function (index) {
         var model = this.model;
         var relatedModel = model.prototype.hasMany()[index];
-        var newColumnRelation = new Column({
+        var newColumnRelation = new column_1.Column({
             name: model.name.toLowerCase() + '_id',
             dbType: "integer" /* INTEGER */,
             foreignKey: true,
@@ -148,14 +150,14 @@ var Collection = /** @class */ (function (_super) {
      * @returns {Object[]} Column metadata
      */
     Collection.getTableSchema = function (modelClass) {
-        return db.execQuery("PRAGMA table_info(" + modelClass.prototype.tableName() + ")");
+        return database_1.db.execQuery("PRAGMA table_info(" + modelClass.prototype.tableName() + ")");
     };
     /**
      * Get Knex query-builder for this collection/table
      * @returns {any}
      */
     Collection.prototype.query = function () {
-        return query(this.tableName());
+        return query_builder_1.query(this.tableName());
     };
     /**
      * Returns table schema with column metadata
@@ -164,7 +166,7 @@ var Collection = /** @class */ (function (_super) {
      * @returns {boolean}
      */
     Collection.hasColumn = function (tableName, columnName) {
-        var results = db.exec("SELECT COUNT(*) AS MATCHED_COLUMNS \n      FROM pragma_table_info('" + tableName + "') WHERE name='" + columnName + "'");
+        var results = database_1.db.exec("SELECT COUNT(*) AS MATCHED_COLUMNS \n      FROM pragma_table_info('" + tableName + "') WHERE name='" + columnName + "'");
         return results[0].values[0][0] > 0;
     };
     /**
@@ -173,9 +175,9 @@ var Collection = /** @class */ (function (_super) {
      * @param {"string"} tableName
      */
     Collection.deleteTable = function (tableName) {
-        db.runQuery(query.schema.dropTableIfExists(tableName));
+        database_1.db.runQuery(query_builder_1.query.schema.dropTableIfExists(tableName));
     };
     return Collection;
-}(Base));
-export { Collection };
+}(base_1.Base));
+exports.Collection = Collection;
 //# sourceMappingURL=collection.js.map

@@ -1,12 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var knex = require('knex');
-import { db } from "./database";
+var database_1 = require("./database");
 var queryBuilder;
+exports.query = queryBuilder;
 if (process.env.NODE_ENV !== 'test') {
     /**
      * Query-Builder: creates sql query strings using functions
      * @type {Knex}
      */
-    queryBuilder = knex({
+    exports.query = queryBuilder = knex({
         client: 'sqlite',
         connection: { filename: ':memory:' },
         useNullAsDefault: true,
@@ -19,7 +22,7 @@ if (process.env.NODE_ENV === 'test') {
      * Mocked query-builder for tests
      * @type {Knex}
      */
-    queryBuilder = knex({
+    exports.query = queryBuilder = knex({
         client: 'sqlite',
         debug: false,
         useNullAsDefault: true,
@@ -36,14 +39,13 @@ if (process.env.NODE_ENV === 'test') {
  * @return {Object[]} list with query results
  */
 queryBuilder().__proto__.run = function () {
-    return db.execQuery(this);
+    return database_1.db.execQuery(this);
 };
 /**
  * Execute database query using query-builder and return only first row
  * @return {Object} query result
  */
 queryBuilder().__proto__.getOne = function () {
-    return db.execQuery(this)[0];
+    return database_1.db.execQuery(this)[0];
 };
-export { queryBuilder as query };
 //# sourceMappingURL=query.builder.js.map

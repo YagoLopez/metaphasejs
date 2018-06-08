@@ -1,6 +1,6 @@
-import {column, getDBTypeFromPropType} from "../decorators";
-import {DBtype} from "../types";
-import {Collection} from "../collection";
+import {column, getDBTypeFromPropType} from "../src/orm/decorators";
+import {DBtype} from "../src/orm/types";
+import {Collection} from "../src/orm/collection";
 import {User} from "./models/user";
 
 

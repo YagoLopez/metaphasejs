@@ -1,10 +1,8 @@
-"use strict";
 //todo: funcionamiento para tipo de columna boolean. Poder usar "true/false"
 //todo: poder obtener una columna de la tabla de un modelo y hacerla nullable (para los casos en que
 // se quiera hacer la columna fk nullable
 //todo: hacer configurable politica de acciones: cascade, set null, etc.
-Object.defineProperty(exports, "__esModule", { value: true });
-var exceptions_1 = require("./exceptions");
+import { InvalidColumnData } from './exceptions';
 var Column = /** @class */ (function () {
     //todo: sqlite no soporta default values (solo null) eliminar la opcion "defaultValue"
     //`sqlite` does not support inserting default values. Specify values explicitly or use the `useNullAsDefault`
@@ -32,10 +30,10 @@ var Column = /** @class */ (function () {
      */
     Column.prototype.createColumnsRelation = function (table) {
         if (!this.name) {
-            throw new exceptions_1.InvalidColumnData(this.name);
+            throw new InvalidColumnData(this.name);
         }
         if (!this.relatedTable) {
-            throw new exceptions_1.InvalidColumnData(this.relatedTable);
+            throw new InvalidColumnData(this.relatedTable);
         }
         table
             .foreign(this.name)
@@ -55,7 +53,7 @@ var Column = /** @class */ (function () {
         var colSize = this.size;
         this.size && console.warn('Size option exists for compatibility. It has no real effect');
         if (!colType || !colName) {
-            throw new exceptions_1.InvalidColumnData(colType || colName);
+            throw new InvalidColumnData(colType || colName);
         }
         if (this.foreignKey) {
             this.createColumnsRelation(table);
@@ -92,5 +90,5 @@ var Column = /** @class */ (function () {
     };
     return Column;
 }());
-exports.Column = Column;
+export { Column };
 //# sourceMappingURL=column.js.map

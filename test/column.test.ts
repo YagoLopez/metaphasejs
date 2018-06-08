@@ -1,6 +1,6 @@
-import {Collection} from "../collection";
-import {Column} from "../column";
-import {DBtype} from "../types";
+import {Collection} from "../src/orm/collection";
+import {Column} from "../src/orm/column";
+import {DBtype} from "../src/orm/types";
 import {User} from "./models/user";
 import {Post} from "./models/post";
 

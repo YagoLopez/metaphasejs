@@ -1,5 +1,5 @@
-import {db} from "../database";
-import {Collection} from "../collection";
+import {db} from "../src/orm/database";
+import {Collection} from "../src/orm/collection";
 import {User} from "./models/user";
 import {Post} from "./models/post";
 import {Comment} from "./models/comment";

@@ -13,12 +13,12 @@ export declare const getUrlParameter: (paramName: string) => string;
  */
 export declare function updateQueryStringParameter(uri: string, key: string, value: string): string;
 /**
- * Disable console output messages (except error).
+ * Disables console output messages (except error).
  * Used for production mode
  */
 export declare function disableConsole(): void;
 /**
- * Log message formats: foreground color, background color
+ * Logs message formats: foreground color, background color
  * CSS syntax is used to format messages
  * @type {Object}
  */

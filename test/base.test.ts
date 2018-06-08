@@ -1,5 +1,5 @@
-import {Collection} from "../collection";
-import {query} from "../query.builder";
+import {Collection} from "../src/orm/collection";
+import {query} from "../src/orm/query.builder";
 import {User} from "./models/user";
 import {Post} from "./models/post";
 import {Comment} from "./models/comment";

@@ -1,6 +1,6 @@
-import {Model} from "../../model";
-import {Column} from "../../column";
-import {DBtype} from "../../types";
+import {Model} from "../../src/orm/model";
+import {Column} from "../../src/orm/column";
+import {DBtype} from "../../src/orm/types";
 import {Comment} from "./comment"
 
 export class Post extends Model {

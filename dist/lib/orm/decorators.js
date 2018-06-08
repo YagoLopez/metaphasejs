@@ -1,11 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-require("reflect-metadata");
-var column_1 = require("./column");
-var exceptions_1 = require("./exceptions");
+import 'reflect-metadata';
+import { Column } from './column';
+import { InvalidPropTypeError } from './exceptions';
 //todo: (revisar) usando solo como tipo DBtype no compila usando el decorador @columna({dbType: DBtype.TEXT)
 //Se une al tipo DBtype el tipo any como solucion temporal
-function column(colData) {
+export function column(colData) {
     return function (target, propName) {
         var dbType;
         var propType = Reflect.getMetadata('design:type', target, propName);
@@ -17,9 +15,9 @@ function column(colData) {
             dbType = getDBTypeFromPropType(propType.name);
         }
         else {
-            throw new exceptions_1.InvalidPropTypeError(propType);
+            throw new InvalidPropTypeError(propType);
         }
-        target.constructor.columns.push(new column_1.Column({
+        target.constructor.columns.push(new Column({
             name: propName,
             dbType: (colData && colData.dbType) || dbType,
             size: colData && colData.size,
@@ -29,7 +27,6 @@ function column(colData) {
         }));
     };
 }
-exports.column = column;
 /**
  * Maps javascript model prop type to SQLite column type.
  *
@@ -48,7 +45,7 @@ exports.column = column;
  * @param jsPropType JavaScript type
  * @return DBtype SQLite type
  */
-function getDBTypeFromPropType(jsPropType) {
+export function getDBTypeFromPropType(jsPropType) {
     jsPropType = jsPropType && jsPropType.toLowerCase();
     var result;
     if (jsPropType === 'string') {
@@ -61,9 +58,8 @@ function getDBTypeFromPropType(jsPropType) {
         result = "null" /* NULL */;
     }
     else {
-        throw new exceptions_1.InvalidPropTypeError(jsPropType);
+        throw new InvalidPropTypeError(jsPropType);
     }
     return result;
 }
-exports.getDBTypeFromPropType = getDBTypeFromPropType;
 //# sourceMappingURL=decorators.js.map

@@ -4,10 +4,13 @@
   (factory((global.metaphasejs = {})));
 }(this, (function (exports) { 'use strict';
 
-  // Debugging in the browser console can be controlled through a url query parameter in.
+  // Debugger in the browser console can be controlled through a url query parameter.
   // For example: http://localhost:3000?logger=true
-  // Controls default logger behaviour.
-  // Pass a 'false' value to avoid logger. This is the desired behaviour for production.
+  /**
+   * Controls default logger behaviour.
+   * Pass a 'false' value to avoid logger. This is the desired behaviour for production.
+   * @type {string}
+   */
   var DEFAULT_LOG_STATE = 'false';
   /**
    * Gets url query parameter form URL
@@ -41,7 +44,7 @@
   var urlLogParam = getUrlParameter('logger');
   urlLogParam = urlLogParam || DEFAULT_LOG_STATE;
   /**
-   * Disable console output messages (except error).
+   * Disables console output messages (except error).
    * Used for production mode
    */
   function disableConsole() {
@@ -54,7 +57,7 @@
       disableConsole();
   }
   /**
-   * Log message formats: foreground color, background color
+   * Logs message formats: foreground color, background color
    * CSS syntax is used to format messages
    * @type {Object}
    */

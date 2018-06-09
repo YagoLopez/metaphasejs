@@ -138,20 +138,14 @@
       var result = exports.db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='" + tableName + "'");
       return result && result.length > 0;
   };
-  exports.db.__proto__.execFunction = function (fnExpression) {
-      var stmt = exports.db.prepare(fnExpression);
-      var result = exports.db.getResults(stmt);
-      stmt.free();
-      return result;
-  };
   exports.db.__proto__.integrityCheck = function () {
-      return exports.db.execFunction('PRAGMA integrity_check');
+      return exports.db.execQuery('PRAGMA integrity_check');
   };
   exports.db.__proto__.getSchema = function () {
       return exports.db.execQuery('SELECT "name", "sql" FROM "sqlite_master" WHERE type="table"');
   };
   exports.db.__proto__.getIdLastRecordInserted = function () {
-      var result = exports.db.execFunction('select last_insert_rowid()');
+      var result = exports.db.execQuery('select last_insert_rowid()');
       return result && result[0]['last_insert_rowid()'];
   };
   var loadDbFromFile = function (fileNamePath, actionFn) {
@@ -606,7 +600,7 @@
           if (load === void 0) { load = { children: false }; }
           var result = exports.db.execQuery("select * from " + this.tableName());
           var models = this.createModelInstances(result);
-          console.table(result);
+          console.table && console.table(result);
           if (load.children) {
               models.forEach(function (model) { return model.getChildrenAll(); });
               return models;
@@ -629,7 +623,7 @@
           if (columns === void 0) { columns = []; }
           if (load === void 0) { load = { children: false }; }
           var result = exports.query.select(columns).from(this.tableName()).where(filter).run();
-          console.table(result);
+          console.table && console.table(result);
           if (load.children) {
               var models = this.createModelInstances(result);
               models.forEach(function (model) { return model.getChildrenAll(); });
@@ -643,7 +637,7 @@
           if (columns === void 0) { columns = []; }
           if (load === void 0) { load = { children: false }; }
           var result = exports.query.select(columns).from(this.tableName()).where(termA, operator, termB).run();
-          console.table(result);
+          console.table && console.table(result);
           if (load.children) {
               var models = this.createModelInstances(result);
               models.forEach(function (model) { return model.getChildrenAll(); });
@@ -1911,7 +1905,7 @@
       return result;
   }
 
-  //todo: comentar funciones para que aparezcan en api doc
+  //todo: liberar memoria con close() al terminar
   (function (DBtype) {
       DBtype["INTEGER"] = "integer";
       DBtype["REAL"] = "real";

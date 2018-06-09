@@ -54,12 +54,6 @@ export interface db {
      */
     getSchema(): Object[];
     /**
-     * Execute SQLite function
-     * @param {string} fnExpression
-     * @returns {any}
-     */
-    execFunction(fnExpression: string): any;
-    /**
      * Get id of last record inserted in database
      * @return {number}
      */

@@ -71,13 +71,6 @@ export interface db {
   getSchema(): Object[];
 
   /**
-   * Execute SQLite function
-   * @param {string} fnExpression
-   * @returns {any}
-   */
-  execFunction(fnExpression: string): any;
-
-  /**
    * Get id of last record inserted in database
    * @return {number}
    */
@@ -130,15 +123,8 @@ db.__proto__.hasTable = (tableName: string): boolean => {
   return result && result.length > 0
 };
 
-db.__proto__.execFunction = (fnExpression: string) => {
-  const stmt = db.prepare(fnExpression);
-  const result = db.getResults(stmt);
-  stmt.free();
-  return result;
-};
-
 db.__proto__.integrityCheck = (): Object[] => {
-  return db.execFunction('PRAGMA integrity_check')
+  return db.execQuery('PRAGMA integrity_check')
 };
 
 db.__proto__.getSchema = () => {
@@ -146,7 +132,7 @@ db.__proto__.getSchema = () => {
 };
 
 db.__proto__.getIdLastRecordInserted = (): number => {
-  const result = db.execFunction('select last_insert_rowid()');
+  const result = db.execQuery('select last_insert_rowid()');
   return result && result[0]['last_insert_rowid()'];
 };
 

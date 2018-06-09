@@ -101,7 +101,7 @@ describe('Model Class', () => {
       expect(result).toBeUndefined();
     });
 
-    test('Invalid children model argument: post1.getChildren(Post)', () => {
+    test('Invalid children model argument: user1.getChildren(Post)', () => {
       let result;
       expect( ()=> result = user1.getChildren(Post) );
       expect(result).toBeUndefined();
@@ -160,7 +160,6 @@ describe('Model Class', () => {
 
   });
 
-
   describe('● hasChildren()', () => {
 
     test('Model has children', () => {
@@ -173,7 +172,7 @@ describe('Model Class', () => {
 
     describe('● omitChildrenProps()', () => {
 
-      test('', () => {
+      test('Model has children', () => {
         const user1_withChildren = users.getById(1, {children: true});
 
         // Check if propertyIsEnumerable() is supported
@@ -184,9 +183,18 @@ describe('Model Class', () => {
         expect( user1_withoutChildren.propertyIsEnumerable('posts') ).toBeFalsy();
       });
 
+      test('Model has not children', () => {
+        const comment1_withoutChildren = comments.getById(1, {children: true});
+        expect( comment1_withoutChildren.propertyIsEnumerable('users') ).toBeFalsy();
+        expect( comment1_withoutChildren.propertyIsEnumerable('posts') ).toBeFalsy();
+      });
+
     });
 
   });
 
+  test('tableName()', () => {
+    expect( user1.tableName() ).toBe('users');
+  });
 
 });

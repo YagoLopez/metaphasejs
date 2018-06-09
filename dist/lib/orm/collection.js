@@ -71,7 +71,7 @@ var Collection = /** @class */ (function (_super) {
         if (load === void 0) { load = { children: false }; }
         var result = database_1.db.execQuery("select * from " + this.tableName());
         var models = this.createModelInstances(result);
-        console.table(result);
+        console.table && console.table(result);
         if (load.children) {
             models.forEach(function (model) { return model.getChildrenAll(); });
             return models;
@@ -94,7 +94,7 @@ var Collection = /** @class */ (function (_super) {
         if (columns === void 0) { columns = []; }
         if (load === void 0) { load = { children: false }; }
         var result = query_builder_1.query.select(columns).from(this.tableName()).where(filter).run();
-        console.table(result);
+        console.table && console.table(result);
         if (load.children) {
             var models = this.createModelInstances(result);
             models.forEach(function (model) { return model.getChildrenAll(); });
@@ -108,7 +108,7 @@ var Collection = /** @class */ (function (_super) {
         if (columns === void 0) { columns = []; }
         if (load === void 0) { load = { children: false }; }
         var result = query_builder_1.query.select(columns).from(this.tableName()).where(termA, operator, termB).run();
-        console.table(result);
+        console.table && console.table(result);
         if (load.children) {
             var models = this.createModelInstances(result);
             models.forEach(function (model) { return model.getChildrenAll(); });

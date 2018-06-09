@@ -33,20 +33,14 @@ exports.db.__proto__.hasTable = function (tableName) {
     var result = exports.db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='" + tableName + "'");
     return result && result.length > 0;
 };
-exports.db.__proto__.execFunction = function (fnExpression) {
-    var stmt = exports.db.prepare(fnExpression);
-    var result = exports.db.getResults(stmt);
-    stmt.free();
-    return result;
-};
 exports.db.__proto__.integrityCheck = function () {
-    return exports.db.execFunction('PRAGMA integrity_check');
+    return exports.db.execQuery('PRAGMA integrity_check');
 };
 exports.db.__proto__.getSchema = function () {
     return exports.db.execQuery('SELECT "name", "sql" FROM "sqlite_master" WHERE type="table"');
 };
 exports.db.__proto__.getIdLastRecordInserted = function () {
-    var result = exports.db.execFunction('select last_insert_rowid()');
+    var result = exports.db.execQuery('select last_insert_rowid()');
     return result && result[0]['last_insert_rowid()'];
 };
 exports.loadDbFromFile = function (fileNamePath, actionFn) {

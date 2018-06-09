@@ -13,15 +13,17 @@
   ],
   "main": "dist/metaphasejs.umd.js",
   "module": "dist/metaphasejs.es5.js",
+  "unpkg": "dist/metaphasejs.es5.js",
   "typings": "dist/types/metaphasejs.d.ts",
   "files": [
     "dist"
   ],
-  "author": "Yago López <yago.lopez@gmail.com>",
+  "author": "Yago Lopez Salvador <yago.lopez@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/YagoLopez/metaphasejs"
   },
+  "bugs": "https://github.com/YagoLopez/metaphasejs/issues",
   "license": "MIT",
   "engines": {
     "node": ">=6.0.0"
@@ -34,17 +36,11 @@
     "start": "rollup -c rollup.config.ts",
     "test": "jest --notify",
     "test:watch": "jest --watch --notify",
-    "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
+    "test:prod": "npm run test -- --coverage --no-cache",
     "deploy-docs": "ts-node tools/gh-pages-publish",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "jest-report-coverage": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "analysis": "source-map-explorer --html ./dist/metaphasejs.es5.js > analysis.html"
-  },
-  "lint-staged": {
-    "{src,test}/**/*.ts": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "config": {
     "commitizen": {
@@ -67,13 +63,14 @@
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "/test/"
+      "/test/",
+      "/temp",
+      "/docs/",
+      "/dist/",
+      "/tools"
     ],
-    "collectCoverage": true
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
+    "collectCoverage": true,
+    "testURL": "http://localhost/?param1=value1&param2="
   },
   "dependencies": {
     "@types/knex": "^0.14.7",

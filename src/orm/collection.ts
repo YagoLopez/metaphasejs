@@ -64,7 +64,7 @@ export class Collection extends Base {
   public getAll( load: {children: boolean} = {children: false} ): Model[] {
     const result = db.execQuery(`select * from ${this.tableName()}`);
     const models: Model[] = this.createModelInstances(result);
-    console.table(result);
+    console.table && console.table(result);
     if (load.children) {
       models.forEach( (model: Model) => model.getChildrenAll() );
       return models;
@@ -88,7 +88,7 @@ export class Collection extends Base {
                      load: {children: boolean} = {children: false} ): Model[] {
 
     const result = query.select(columns).from(this.tableName()).where(filter).run();
-    console.table(result);
+    console.table && console.table(result);
     if (load.children) {
       const models: Model[] = this.createModelInstances(result);
       models.forEach( (model: Model) => model.getChildrenAll() );
@@ -105,7 +105,7 @@ export class Collection extends Base {
                        load: {children: boolean} = {children: false}): Model[] {
 
     const result = query.select(columns).from(this.tableName()).where(termA, operator, termB).run();
-    console.table(result);
+    console.table && console.table(result);
     if (load.children) {
       const models: Model[] = this.createModelInstances(result);
       models.forEach( (model: Model) => model.getChildrenAll() );

@@ -61,7 +61,6 @@ describe('Model Class', () => {
 
   });
 
-
   test('getChildrenAll()', () => {
     user1.getChildrenAll();
     expect(user1.posts.length).toBe(2);
@@ -160,5 +159,34 @@ describe('Model Class', () => {
     });
 
   });
+
+
+  describe('● hasChildren()', () => {
+
+    test('Model has children', () => {
+      expect(user1.hasChildren()).toBeTruthy();
+    });
+
+    test('Model has not children', () => {
+      expect(comment1.hasChildren()).toBeFalsy();
+    });
+
+    describe('● omitChildrenProps()', () => {
+
+      test('', () => {
+        const user1_withChildren = users.getById(1, {children: true});
+
+        // Check if propertyIsEnumerable() is supported
+        expect( user1_withChildren.propertyIsEnumerable ).toBeDefined();
+
+        expect( user1_withChildren.propertyIsEnumerable('posts') ).toBeTruthy();
+        const user1_withoutChildren = User.omitChildrenProps(user1_withChildren);
+        expect( user1_withoutChildren.propertyIsEnumerable('posts') ).toBeFalsy();
+      });
+
+    });
+
+  });
+
 
 });

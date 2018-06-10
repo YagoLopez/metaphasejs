@@ -1,6 +1,6 @@
 {
   "name": "metaphasejs",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "Super easy, efficient and agnostic state management for Javascript",
   "keywords": [
     "state management",
@@ -40,7 +40,10 @@
     "deploy-docs": "ts-node tools/gh-pages-publish",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "jest-report-coverage": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "analysis": "source-map-explorer --html ./dist/metaphasejs.es5.js > analysis.html"
+    "analysis": "source-map-explorer --html ./dist/metaphasejs.es5.js > analysis.html",
+    "show-analysis": "start http://localhost:63342/analysis.html",
+    "show-jest-coverage": "start http://localhost:63342/metaphasejs/coverage/lcov-report/index.html",
+    "show-docs": "start http://localhost:63342/metaphasejs/docs/index.html"
   },
   "config": {
     "commitizen": {

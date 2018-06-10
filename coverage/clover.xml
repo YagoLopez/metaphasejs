@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1528628884387" clover="3.2.0">
-  <project timestamp="1528628884387" name="All files">
+<coverage generated="1528629248397" clover="3.2.0">
+  <project timestamp="1528629248397" name="All files">
     <metrics statements="359" coveredstatements="301" conditionals="143" coveredconditionals="99" methods="81" coveredmethods="69" elements="583" coveredelements="469" complexity="0" loc="359" ncloc="359" packages="1" files="10" classes="10">
       <file name="base.ts" path="C:\Users\yagol\Documents\projects\metaphasejs\src\orm\base.ts">
         <metrics statements="29" coveredstatements="29" conditionals="12" coveredconditionals="11" methods="6" coveredmethods="6"/>

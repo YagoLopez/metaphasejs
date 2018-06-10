@@ -1905,7 +1905,7 @@
       return result;
   }
 
-  //todo: liberar memoria con close() al terminar
+  //todo: actualizar dependencias rollup y typescript
   (function (DBtype) {
       DBtype["INTEGER"] = "integer";
       DBtype["REAL"] = "real";

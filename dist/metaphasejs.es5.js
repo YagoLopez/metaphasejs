@@ -1899,7 +1899,7 @@ function getDBTypeFromPropType(jsPropType) {
     return result;
 }
 
-//todo: liberar memoria con close() al terminar
+//todo: actualizar dependencias rollup y typescript
 var DBtype;
 (function (DBtype) {
     DBtype["INTEGER"] = "integer";

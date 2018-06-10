@@ -40,6 +40,12 @@ yarn / npm test
 ## Notes
 
 - At this moment there are not polyfills for old browsers, but there will be in the future.
-- In Typescript if `strict = true` in `tsconfig.json` model properties (columns in db) must be initialized
+- if Typescript and decorators are used, its configuration file `tsconfig.json` must have:
+  - `experimentalDecorators = true`
+
+  - `emitDecoratorMetadata = true`
+
+  - if flag `strict = true` is used, model properties (columns in db) must be initialized with values
+
 
 <p align="center"><a href="#">Back to top</a> ↑</p>

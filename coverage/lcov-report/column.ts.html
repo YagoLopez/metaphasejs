@@ -355,9 +355,9 @@
 // se quiera hacer la columna fk nullable
 //todo: hacer configurable politica de acciones: cascade, set null, etc.
 &nbsp;
-import { DBtype } from './types'
-import { TableBuilder } from 'knex'
-import { InvalidColumnData } from './exceptions'
+import { DBtype } from './types';
+import { TableBuilder } from 'knex';
+import { InvalidColumnData } from './exceptions';
 &nbsp;
 export const enum ColumnAction {
   Cascade = 'cascade',
@@ -368,27 +368,27 @@ export const enum ColumnAction {
 }
 &nbsp;
 export interface IColumn {
-  name?: string
-  dbType?: DBtype | any
-  size?: number
-  foreignKey?: boolean
-  relatedTable?: string
-  unique?: boolean
-  defaultValue?: any
-  notNullable?: boolean
-  index?: boolean
+  name?: string;
+  dbType?: DBtype | any;
+  size?: number;
+  foreignKey?: boolean;
+  relatedTable?: string;
+  unique?: boolean;
+  defaultValue?: any;
+  notNullable?: boolean;
+  index?: boolean;
 }
 &nbsp;
 export class Column implements IColumn {
-  name?: string
-  dbType?: DBtype
-  size?: number
-  foreignKey?: boolean
-  relatedTable?: string
-  unique?: boolean
-  defaultValue?: any
-  notNullable?: boolean
-  index?: boolean
+  name?: string;
+  dbType?: DBtype;
+  size?: number;
+  foreignKey?: boolean;
+  relatedTable?: string;
+  unique?: boolean;
+  defaultValue?: any;
+  notNullable?: boolean;
+  index?: boolean;
 &nbsp;
   //todo: sqlite no soporta default values (solo null) eliminar la opcion "defaultValue"
   //`sqlite` does not support inserting default values. Specify values explicitly or use the `useNullAsDefault`
@@ -405,15 +405,15 @@ export class Column implements IColumn {
     notNullable,
     index
   }: IColumn) {
-    this.name = name
-    this.dbType = dbType
-    this.foreignKey = foreignKey
-    this.relatedTable = relatedTable
-    this.unique = unique
-    this.defaultValue = defaultValue
-    this.size = size
-    this.notNullable = notNullable
-    this.index = index
+    this.name = name;
+    this.dbType = dbType;
+    this.foreignKey = foreignKey;
+    this.relatedTable = relatedTable;
+    this.unique = unique;
+    this.defaultValue = defaultValue;
+    this.size = size;
+    this.notNullable = notNullable;
+    this.index = index;
   }
 &nbsp;
   /**
@@ -427,11 +427,11 @@ export class Column implements IColumn {
    */
   public createColumnsRelation(table: TableBuilder) {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.name) {
-<span class="cstat-no" title="statement not covered" >      throw new InvalidColumnData(this.name)</span>
+<span class="cstat-no" title="statement not covered" >      throw new InvalidColumnData(this.name);</span>
     }
 &nbsp;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.relatedTable) {
-<span class="cstat-no" title="statement not covered" >      throw new InvalidColumnData(this.relatedTable)</span>
+<span class="cstat-no" title="statement not covered" >      throw new InvalidColumnData(this.relatedTable);</span>
     }
 &nbsp;
     table
@@ -446,60 +446,60 @@ export class Column implements IColumn {
    * Create table columns based in column properties
    * @param {Knex.TableBuilder} table
    */
-  public createColumn(table: TableBuilder) {
-    let newColumn
-    const colType = this.dbType
-    const colName = this.name
-    const colSize = this.size
+  public createColumn(table: TableBuilder | any) {
+    let newColumn;
+    const colType = this.dbType;
+    const colName = this.name;
+    const colSize = this.size;
 &nbsp;
-    this.size &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >console.warn('Size option exists for compatibility. It has no real effect')</span>
+    this.size &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >console.warn('Size option exists for compatibility. It has no real effect');</span>
 &nbsp;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!colType || !colName) {
-<span class="cstat-no" title="statement not covered" >      throw new InvalidColumnData(colType || colName)</span>
+<span class="cstat-no" title="statement not covered" >      throw new InvalidColumnData(colType || colName);</span>
     }
     if (this.foreignKey) {
-      this.createColumnsRelation(table)
+      this.createColumnsRelation(table);
     }
     if (this.notNullable) {
-      newColumn = table[colType](colName).notNullable()
+      newColumn = table[colType](colName).notNullable();
     }
     if (this.unique) {
-      newColumn = Column.addUniqueConstraint(newColumn, table, colType, colName)
+      newColumn = Column.addUniqueConstraint(newColumn, table, colType, colName);
     }
     <span class="missing-if-branch" title="if path not taken" >I</span>if (this.index) {
-<span class="cstat-no" title="statement not covered" >      newColumn = Column.addIndex(newColumn, table, colType, colName)</span>
+<span class="cstat-no" title="statement not covered" >      newColumn = Column.addIndex(newColumn, table, colType, colName);</span>
     }
-    return newColumn || table[colType](colName, colSize)
+    return newColumn || table[colType](colName, colSize);
   }
 &nbsp;
   private static addUniqueConstraint(
     newColumn: any,
-    tableBuilder: TableBuilder,
+    tableBuilder: TableBuilder | any,
     colType: DBtype,
     colName: string
   ): TableBuilder {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (newColumn) {
-<span class="cstat-no" title="statement not covered" >      return newColumn.unique()</span>
+<span class="cstat-no" title="statement not covered" >      return newColumn.unique();</span>
     } else {
-      return tableBuilder[colType](colName).unique()
+      return tableBuilder[colType](colName).unique();
     }
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  private static addIndex(</span>
     newColumn: any,
-    tableBuilder: TableBuilder,
+    tableBuilder: TableBuilder | any,
     colType: DBtype,
     colName: string
   ): TableBuilder {
 <span class="cstat-no" title="statement not covered" >    if (newColumn) {</span>
-<span class="cstat-no" title="statement not covered" >      return newColumn.index()</span>
+<span class="cstat-no" title="statement not covered" >      return newColumn.index();</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      return tableBuilder[colType](colName).index()</span>
+<span class="cstat-no" title="statement not covered" >      return tableBuilder[colType](colName).index();</span>
     }
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  public isForeignKey(): boolean {</span>
-<span class="cstat-no" title="statement not covered" >    return Boolean(this.foreignKey)</span>
+<span class="cstat-no" title="statement not covered" >    return Boolean(this.foreignKey);</span>
   }
 }
 &nbsp;</pre></td></tr>
@@ -508,7 +508,7 @@ export class Column implements IColumn {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jun 10 2018 13:14:08 GMT+0200 (Hora de verano romance)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jun 10 2018 13:53:42 GMT+0200 (Hora de verano romance)
 </div>
 </div>
 <script src="prettify.js"></script>

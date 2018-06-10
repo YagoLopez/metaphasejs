@@ -6,7 +6,7 @@ import {logQuery} from "./yago.logger";
 
 export abstract class Base {
 
-  protected model: Model;
+  protected model: any;
 
   public tableName(): string {
     let name;

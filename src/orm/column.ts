@@ -3,9 +3,9 @@
 // se quiera hacer la columna fk nullable
 //todo: hacer configurable politica de acciones: cascade, set null, etc.
 
-import { DBtype } from './types'
-import { TableBuilder } from 'knex'
-import { InvalidColumnData } from './exceptions'
+import { DBtype } from './types';
+import { TableBuilder } from 'knex';
+import { InvalidColumnData } from './exceptions';
 
 export const enum ColumnAction {
   Cascade = 'cascade',
@@ -16,27 +16,27 @@ export const enum ColumnAction {
 }
 
 export interface IColumn {
-  name?: string
-  dbType?: DBtype | any
-  size?: number
-  foreignKey?: boolean
-  relatedTable?: string
-  unique?: boolean
-  defaultValue?: any
-  notNullable?: boolean
-  index?: boolean
+  name?: string;
+  dbType?: DBtype | any;
+  size?: number;
+  foreignKey?: boolean;
+  relatedTable?: string;
+  unique?: boolean;
+  defaultValue?: any;
+  notNullable?: boolean;
+  index?: boolean;
 }
 
 export class Column implements IColumn {
-  name?: string
-  dbType?: DBtype
-  size?: number
-  foreignKey?: boolean
-  relatedTable?: string
-  unique?: boolean
-  defaultValue?: any
-  notNullable?: boolean
-  index?: boolean
+  name?: string;
+  dbType?: DBtype;
+  size?: number;
+  foreignKey?: boolean;
+  relatedTable?: string;
+  unique?: boolean;
+  defaultValue?: any;
+  notNullable?: boolean;
+  index?: boolean;
 
   //todo: sqlite no soporta default values (solo null) eliminar la opcion "defaultValue"
   //`sqlite` does not support inserting default values. Specify values explicitly or use the `useNullAsDefault`
@@ -53,15 +53,15 @@ export class Column implements IColumn {
     notNullable,
     index
   }: IColumn) {
-    this.name = name
-    this.dbType = dbType
-    this.foreignKey = foreignKey
-    this.relatedTable = relatedTable
-    this.unique = unique
-    this.defaultValue = defaultValue
-    this.size = size
-    this.notNullable = notNullable
-    this.index = index
+    this.name = name;
+    this.dbType = dbType;
+    this.foreignKey = foreignKey;
+    this.relatedTable = relatedTable;
+    this.unique = unique;
+    this.defaultValue = defaultValue;
+    this.size = size;
+    this.notNullable = notNullable;
+    this.index = index;
   }
 
   /**
@@ -75,11 +75,11 @@ export class Column implements IColumn {
    */
   public createColumnsRelation(table: TableBuilder) {
     if (!this.name) {
-      throw new InvalidColumnData(this.name)
+      throw new InvalidColumnData(this.name);
     }
 
     if (!this.relatedTable) {
-      throw new InvalidColumnData(this.relatedTable)
+      throw new InvalidColumnData(this.relatedTable);
     }
 
     table
@@ -94,59 +94,59 @@ export class Column implements IColumn {
    * Create table columns based in column properties
    * @param {Knex.TableBuilder} table
    */
-  public createColumn(table: TableBuilder) {
-    let newColumn
-    const colType = this.dbType
-    const colName = this.name
-    const colSize = this.size
+  public createColumn(table: TableBuilder | any) {
+    let newColumn;
+    const colType = this.dbType;
+    const colName = this.name;
+    const colSize = this.size;
 
-    this.size && console.warn('Size option exists for compatibility. It has no real effect')
+    this.size && console.warn('Size option exists for compatibility. It has no real effect');
 
     if (!colType || !colName) {
-      throw new InvalidColumnData(colType || colName)
+      throw new InvalidColumnData(colType || colName);
     }
     if (this.foreignKey) {
-      this.createColumnsRelation(table)
+      this.createColumnsRelation(table);
     }
     if (this.notNullable) {
-      newColumn = table[colType](colName).notNullable()
+      newColumn = table[colType](colName).notNullable();
     }
     if (this.unique) {
-      newColumn = Column.addUniqueConstraint(newColumn, table, colType, colName)
+      newColumn = Column.addUniqueConstraint(newColumn, table, colType, colName);
     }
     if (this.index) {
-      newColumn = Column.addIndex(newColumn, table, colType, colName)
+      newColumn = Column.addIndex(newColumn, table, colType, colName);
     }
-    return newColumn || table[colType](colName, colSize)
+    return newColumn || table[colType](colName, colSize);
   }
 
   private static addUniqueConstraint(
     newColumn: any,
-    tableBuilder: TableBuilder,
+    tableBuilder: TableBuilder | any,
     colType: DBtype,
     colName: string
   ): TableBuilder {
     if (newColumn) {
-      return newColumn.unique()
+      return newColumn.unique();
     } else {
-      return tableBuilder[colType](colName).unique()
+      return tableBuilder[colType](colName).unique();
     }
   }
 
   private static addIndex(
     newColumn: any,
-    tableBuilder: TableBuilder,
+    tableBuilder: TableBuilder | any,
     colType: DBtype,
     colName: string
   ): TableBuilder {
     if (newColumn) {
-      return newColumn.index()
+      return newColumn.index();
     } else {
-      return tableBuilder[colType](colName).index()
+      return tableBuilder[colType](colName).index();
     }
   }
 
   public isForeignKey(): boolean {
-    return Boolean(this.foreignKey)
+    return Boolean(this.foreignKey);
   }
 }

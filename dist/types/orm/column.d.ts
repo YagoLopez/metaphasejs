@@ -43,7 +43,7 @@ export declare class Column implements IColumn {
      * Create table columns based in column properties
      * @param {Knex.TableBuilder} table
      */
-    createColumn(table: TableBuilder): any;
+    createColumn(table: TableBuilder | any): any;
     private static addUniqueConstraint;
     private static addIndex;
     isForeignKey(): boolean;

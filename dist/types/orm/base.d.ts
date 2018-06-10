@@ -1,6 +1,5 @@
-import { Model } from "./model";
 export declare abstract class Base {
-    protected model: Model;
+    protected model: any;
     tableName(): string;
     protected insert(model?: any): number | string;
     protected update(model?: any): number | string;

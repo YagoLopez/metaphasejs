@@ -1,7 +1,5 @@
-"use strict";
 // Debugger in the browser console can be controlled through a url query parameter.
 // For example: http://localhost:3000?logger=true
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Controls default logger behaviour.
  * Pass a 'false' value to avoid logger. This is the desired behaviour for production.
@@ -13,7 +11,7 @@ var DEFAULT_LOG_STATE = 'false';
  * @param {string} paramName
  * @returns {string}
  */
-exports.getUrlParameter = function (paramName) {
+export var getUrlParameter = function (paramName) {
     paramName = paramName.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
     var regex = new RegExp('[\\?&]' + paramName + '=([^&#]*)');
     var results = regex.exec(location.search);
@@ -26,7 +24,7 @@ exports.getUrlParameter = function (paramName) {
  * @param {string} value
  * @return {string}
  */
-function updateQueryStringParameter(uri, key, value) {
+export function updateQueryStringParameter(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf('?') !== -1 ? "&" : "?";
     if (uri.match(re)) {
@@ -36,21 +34,19 @@ function updateQueryStringParameter(uri, key, value) {
         return uri + separator + key + "=" + value;
     }
 }
-exports.updateQueryStringParameter = updateQueryStringParameter;
 // Variable that holds the looger state
-var urlLogParam = exports.getUrlParameter('logger');
+var urlLogParam = getUrlParameter('logger');
 urlLogParam = urlLogParam || DEFAULT_LOG_STATE;
 /**
  * Disables console output messages (except error).
  * Used for production mode
  */
-function disableConsole() {
+export function disableConsole() {
     // console = console || {};
     console.log = function () { };
     console.table = function () { };
     console.warn = function () { };
 }
-exports.disableConsole = disableConsole;
 if (urlLogParam === 'false') {
     disableConsole();
 }
@@ -59,7 +55,7 @@ if (urlLogParam === 'false') {
  * CSS syntax is used to format messages
  * @type {Object}
  */
-exports.LOG_FORMAT = {
+export var LOG_FORMAT = {
     BLUE: 'background: ghostwhite; color: cornflowerblue; font-size: 12px; font-weight: bold',
     ORANGE: 'color: orange',
     BG_YELLOW: 'background-color: yellow'
@@ -71,29 +67,27 @@ exports.LOG_FORMAT = {
  * @param {string} msg
  * @param {"query" | "result" | string} format
  */
-function logQuery(msg, format) {
+export function logQuery(msg, format) {
     if (format === 'query') {
-        var format_1 = exports.LOG_FORMAT.BLUE;
+        var format_1 = LOG_FORMAT.BLUE;
         console.log("%c" + msg, format_1);
     }
     else if (format === 'result') {
-        var format_2 = exports.LOG_FORMAT.ORANGE;
+        var format_2 = LOG_FORMAT.ORANGE;
         console.log("%c\u2705 " + msg, format_2);
     }
     else {
         console.log("%c" + msg, format);
     }
 }
-exports.logQuery = logQuery;
 /**
  * General Fn to apply format to a log message
  * @param {string} msg
  * @param {string} format
  */
-function log(msg, format) {
+export function log(msg, format) {
     console.log("%c" + msg, format);
 }
-exports.log = log;
 /* Using a global variable: ********************************** */
 // interface window {
 //   DEBUG: boolean;

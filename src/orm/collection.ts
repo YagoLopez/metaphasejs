@@ -1,4 +1,3 @@
-//todo: poder ejecutar consulta sql que conste de varias sentencias en varias lineas
 //todo: quitar el plural de las tablas = tableName();
 //todo: hacer fn para paginacion. params: limit (rows per page), offset: (num. pag)
 //getAllPaginated(pagNum, recordNum)

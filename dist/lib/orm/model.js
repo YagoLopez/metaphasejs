@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -8,9 +9,10 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import { Base } from "./base";
-import { query } from "./query.builder";
-import { NotSavedModelError } from "./exceptions";
+Object.defineProperty(exports, "__esModule", { value: true });
+var base_1 = require("./base");
+var query_builder_1 = require("./query.builder");
+var exceptions_1 = require("./exceptions");
 var Model = /** @class */ (function (_super) {
     __extends(Model, _super);
     function Model(props) {
@@ -39,7 +41,7 @@ var Model = /** @class */ (function (_super) {
             throw new Error('Invalid model instance: ' + model);
         }
         if (!model.isSaved()) {
-            throw new NotSavedModelError(model, this);
+            throw new exceptions_1.NotSavedModelError(model, this);
         }
         var foreignColumnName = model.getForeignKeyColumnName();
         this[foreignColumnName] = model.id;
@@ -50,12 +52,12 @@ var Model = /** @class */ (function (_super) {
     //dependiendo de lado de la relacion (consultar typeorm para ver como lo hace)
     Model.prototype.getParent = function (model) {
         if (!this.isSaved()) {
-            throw new NotSavedModelError(this, model);
+            throw new exceptions_1.NotSavedModelError(this, model);
         }
         var relatedTable = model.prototype.tableName();
         var fkColumnName = model.prototype.getForeignKeyColumnName();
         var idColValue = this[fkColumnName];
-        var relatedModels = query(relatedTable).where('id', idColValue).run();
+        var relatedModels = query_builder_1.query(relatedTable).where('id', idColValue).run();
         return relatedModels.map(function (obj) { return Model.create(obj, model); });
     };
     //todo: intentar crear dinamicamente esta funcion como "posts()" por ejemplo
@@ -66,12 +68,12 @@ var Model = /** @class */ (function (_super) {
      */
     Model.prototype.getChildren = function (model) {
         if (!this.isSaved()) {
-            throw new NotSavedModelError(this, model);
+            throw new exceptions_1.NotSavedModelError(this, model);
         }
         var childTable = model.prototype.tableName();
         var fkColumnChildTable = this.getForeignKeyColumnName();
         try {
-            var relatedModels = query(childTable).where(fkColumnChildTable, this.id).run();
+            var relatedModels = query_builder_1.query(childTable).where(fkColumnChildTable, this.id).run();
             return relatedModels.map(function (obj) { return Model.create(obj, model); });
         }
         catch (exception) {
@@ -123,6 +125,6 @@ var Model = /** @class */ (function (_super) {
         return this.hasMany !== undefined;
     };
     return Model;
-}(Base));
-export { Model };
+}(base_1.Base));
+exports.Model = Model;
 //# sourceMappingURL=model.js.map

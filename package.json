@@ -41,7 +41,7 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "jest-report-coverage": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "analysis": "source-map-explorer --html ./dist/metaphasejs.es5.js > analysis.html",
-    "show-analysis": "start http://localhost:63342/analysis.html",
+    "show-analysis": "start http://localhost:63342/metaphasejs/analysis.html",
     "show-jest-coverage": "start http://localhost:63342/metaphasejs/coverage/lcov-report/index.html",
     "show-docs": "start http://localhost:63342/metaphasejs/docs/index.html"
   },

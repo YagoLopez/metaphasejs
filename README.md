@@ -8,7 +8,7 @@ Super easy, efficient and agnostic state management for Javascript
 
 # Demo
 
-- [Link](https://github.com/YagoLopez/metaphasejs-react-demo)
+- [Link and code examples](https://github.com/YagoLopez/metaphasejs-react-demo)
 
 # Usage
 

@@ -1,9 +1,11 @@
-import 'reflect-metadata';
-import { Column } from './column';
-import { InvalidPropTypeError } from './exceptions';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
+var column_1 = require("./column");
+var exceptions_1 = require("./exceptions");
 //todo: (revisar) usando solo como tipo DBtype no compila usando el decorador @columna({dbType: DBtype.TEXT)
 //Se une al tipo DBtype el tipo any como solucion temporal
-export function column(colData) {
+function column(colData) {
     return function (target, propName) {
         var dbType;
         var propType = Reflect.getMetadata('design:type', target, propName);
@@ -15,9 +17,9 @@ export function column(colData) {
             dbType = getDBTypeFromPropType(propType.name);
         }
         else {
-            throw new InvalidPropTypeError(propType);
+            throw new exceptions_1.InvalidPropTypeError(propType);
         }
-        target.constructor.columns.push(new Column({
+        target.constructor.columns.push(new column_1.Column({
             name: propName,
             dbType: (colData && colData.dbType) || dbType,
             size: colData && colData.size,
@@ -27,6 +29,7 @@ export function column(colData) {
         }));
     };
 }
+exports.column = column;
 /**
  * Maps javascript model prop type to SQLite column type.
  *
@@ -45,7 +48,7 @@ export function column(colData) {
  * @param jsPropType JavaScript type
  * @return DBtype SQLite type
  */
-export function getDBTypeFromPropType(jsPropType) {
+function getDBTypeFromPropType(jsPropType) {
     jsPropType = jsPropType && jsPropType.toLowerCase();
     var result;
     if (jsPropType === 'string') {
@@ -58,8 +61,9 @@ export function getDBTypeFromPropType(jsPropType) {
         result = "null" /* NULL */;
     }
     else {
-        throw new InvalidPropTypeError(jsPropType);
+        throw new exceptions_1.InvalidPropTypeError(jsPropType);
     }
     return result;
 }
+exports.getDBTypeFromPropType = getDBTypeFromPropType;
 //# sourceMappingURL=decorators.js.map

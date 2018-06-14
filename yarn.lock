@@ -5200,9 +5200,9 @@ rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.2.0:
     estree-walker "^0.5.2"
     micromatch "^2.3.11"
 
-rollup@0.60.3:
-  version "0.60.3"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.60.3.tgz#2fe5a484e4a564f188b865129a32087bc15c3d69"
+rollup@0.60.7:
+  version "0.60.7"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.60.7.tgz#2b62ef9306f719b1ab85a7814b3e6596ac51fae8"
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "*"

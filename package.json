@@ -1,6 +1,6 @@
 {
   "name": "metaphasejs",
-  "version": "0.9.8",
+  "version": "0.9.81",
   "description": "Super easy, efficient and agnostic state management for Javascript",
   "keywords": [
     "state management",

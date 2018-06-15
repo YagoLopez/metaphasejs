@@ -176,6 +176,7 @@ export const saveDbToFile = (fileNamePath: string) => {
     alert('Save file to disk not supported by browser');
     console.error(exception);
   }
+  db.execQuery('PRAGMA foreign_keys=ON;');
 };
 
 console.clear();

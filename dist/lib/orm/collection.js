@@ -132,7 +132,7 @@ var Collection = /** @class */ (function (_super) {
         });
         var logFormat = 'color: grey; border-color: lightgrey; border-style: solid; border-width: 1px; ' +
             'border-radius: 2px; padding: 2px; background-color: #f0f0f5';
-        console.log("%c \u26BF Foreign-key column created in table " + relatedModel.prototype.tableName() + ": ", logFormat);
+        console.log("%c \u26BF Foreign-key column created in table " + relatedModel.prototype.tableName() + "\u21B4 ", logFormat);
         console.log(newColumnRelation);
         var relatedModelColumns = relatedModel.prototype.constructor.columns;
         relatedModelColumns.push(newColumnRelation);

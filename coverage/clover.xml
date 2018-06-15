@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1528971919476" clover="3.2.0">
-  <project timestamp="1528971919476" name="All files">
-    <metrics statements="359" coveredstatements="301" conditionals="143" coveredconditionals="99" methods="81" coveredmethods="69" elements="583" coveredelements="469" complexity="0" loc="359" ncloc="359" packages="1" files="10" classes="10">
+<coverage generated="1529057248158" clover="3.2.0">
+  <project timestamp="1529057248158" name="All files">
+    <metrics statements="360" coveredstatements="301" conditionals="143" coveredconditionals="99" methods="81" coveredmethods="69" elements="584" coveredelements="469" complexity="0" loc="360" ncloc="360" packages="1" files="10" classes="10">
       <file name="base.ts" path="C:\Users\yagol\Documents\projects\metaphasejs\src\orm\base.ts">
         <metrics statements="29" coveredstatements="29" conditionals="12" coveredconditionals="11" methods="6" coveredmethods="6"/>
         <line num="7" count="6" type="stmt"/>
@@ -177,7 +177,7 @@
         <line num="152" count="6" type="stmt"/>
       </file>
       <file name="database.ts" path="C:\Users\yagol\Documents\projects\metaphasejs\src\orm\database.ts">
-        <metrics statements="56" coveredstatements="30" conditionals="8" coveredconditionals="4" methods="13" coveredmethods="7"/>
+        <metrics statements="57" coveredstatements="30" conditionals="8" coveredconditionals="4" methods="13" coveredmethods="7"/>
         <line num="2" count="6" type="stmt"/>
         <line num="5" count="6" type="stmt"/>
         <line num="95" count="6" type="stmt"/>
@@ -233,7 +233,8 @@
         <line num="174" count="0" type="stmt"/>
         <line num="176" count="0" type="stmt"/>
         <line num="177" count="0" type="stmt"/>
-        <line num="181" count="6" type="stmt"/>
+        <line num="179" count="0" type="stmt"/>
+        <line num="182" count="6" type="stmt"/>
       </file>
       <file name="decorators.ts" path="C:\Users\yagol\Documents\projects\metaphasejs\src\orm\decorators.ts">
         <metrics statements="16" coveredstatements="9" conditionals="23" coveredconditionals="8" methods="3" coveredmethods="1"/>

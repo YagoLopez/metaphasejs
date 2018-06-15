@@ -130,7 +130,7 @@ export class Collection extends Base {
     });
     const logFormat = 'color: grey; border-color: lightgrey; border-style: solid; border-width: 1px; ' +
       'border-radius: 2px; padding: 2px; background-color: #f0f0f5';
-    console.log(`%c ⚿ Foreign-key column created in table ${relatedModel.prototype.tableName()}: `, logFormat);
+    console.log(`%c ⚿ Foreign-key column created in table ${relatedModel.prototype.tableName()}↴ `, logFormat);
     console.log(newColumnRelation);
     const relatedModelColumns = relatedModel.prototype.constructor.columns;
     relatedModelColumns.push(newColumnRelation);

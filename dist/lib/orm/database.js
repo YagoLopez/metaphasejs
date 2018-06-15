@@ -84,6 +84,7 @@ exports.saveDbToFile = function (fileNamePath) {
         alert('Save file to disk not supported by browser');
         console.error(exception);
     }
+    exports.db.execQuery('PRAGMA foreign_keys=ON;');
 };
 console.clear();
 //# sourceMappingURL=database.js.map

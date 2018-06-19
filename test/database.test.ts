@@ -61,7 +61,7 @@ describe('Database Module', () => {
     const sqlQueryExistingRecord = 'SELECT * FROM users WHERE name="user1"';
     expect( db.getResults(db.prepare(sqlQueryExistingRecord))[0] ).toEqual(user1);
 
-    const sqlQueryUnexistingRecord = 'SELECT * FROM users WHERE name="pepe"';
+    const sqlQueryUnexistingRecord = 'SELECT * FROM users WHERE name="unexistent user name"';
     expect( db.getResults(db.prepare(sqlQueryUnexistingRecord)).length ).toBe(0);
   });
 

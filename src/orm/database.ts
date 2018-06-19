@@ -1,4 +1,5 @@
-//todo: usar whatg-fetch en lugar de fetch para compatibilidad navegador
+//todo: usar whatg-fetch en lugar de fetch para compatibilidad navegador (?)
+
 const sql = require('sql.js');
 import {QueryBuilder} from 'knex';
 import {logQuery} from './yago.logger';
@@ -149,8 +150,9 @@ export const loadDbFromFile = (fileNamePath: string, actionFn: Function): void =
       db.setDatabase(dbInstance);
       try {
         db.integrityCheck();
-      } catch (exception) {
-        alert(`Database file not found: "${fileNamePath}"`);
+      } catch (error) {
+        console.error(error);
+        alert(`Error loading db file: "${fileNamePath}"`);
       }
       console.clear();
       const logFormat = 'background: cornflowerblue; color: white; font-weight: ';
@@ -161,7 +163,7 @@ export const loadDbFromFile = (fileNamePath: string, actionFn: Function): void =
   })
   .catch((error: Error) => {
     console.error(error);
-    alert('Failed to fetch database file');
+    alert('Error loading db file');
   })
 };
 

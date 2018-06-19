@@ -2,6 +2,8 @@
  [![Maintainability](https://api.codeclimate.com/v1/badges/c264e58f56102a22476c/maintainability)](https://codeclimate.com/github/YagoLopez/metaphasejs/maintainability) <!--[![Known Vulnerabilities](https://snyk.io/test/github/YagoLopez/metaphasejs/badge.svg?targetFile=package.json)](https://snyk.io/test/github/YagoLopez/metaphasejs?targetFile=package.json)--> [![Coverage Status](https://coveralls.io/repos/github/YagoLopez/metaphasejs/badge.svg?branch=master)](https://coveralls.io/github/YagoLopez/metaphasejs?branch=master) 
 <!--![license](https://img.shields.io/github/license/mashape/apistatus.svg) [![Packages Analysis](https://img.shields.io/badge/packages-analysis-blue.svg)](analysis.html)-->
 
+![NPM package](https://nodei.co/npm/metaphasejs.png)
+
 # MetaphaseJS
 
 Super easy, efficient and agnostic state management for Javascript
@@ -11,9 +13,6 @@ Super easy, efficient and agnostic state management for Javascript
 - [Link and code examples](https://github.com/YagoLopez/metaphasejs-react-demo)
 
 # Usage
-npm install metaphasejs // NPM
-
-![NPM package](https://nodei.co/npm/metaphasejs.png)
 
 ```javascript
 // Install

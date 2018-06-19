@@ -11,6 +11,9 @@ Super easy, efficient and agnostic state management for Javascript
 - [Link and code examples](https://github.com/YagoLopez/metaphasejs-react-demo)
 
 # Usage
+npm install metaphasejs // NPM
+
+![NPM package](https://nodei.co/npm/metaphasejs.png)
 
 ```javascript
 // Install
@@ -40,12 +43,12 @@ yarn / npm test
 ## Notes
 
 - At this moment there are not polyfills for old browsers, but there will be in the future.
-- if Typescript and decorators are used, its configuration file `tsconfig.json` must have:
+- If Typescript and decorators are used, its configuration file `tsconfig.json` must have:
   - `experimentalDecorators = true`
 
   - `emitDecoratorMetadata = true`
 
-  - if flag `strict = true` is used, model properties (columns in db) must be initialized with values
+  - If flag `strict = true` is used, model properties (columns in db) must be initialized with values
 
 
 <p align="center"><a href="#">Back to top</a> ↑</p>

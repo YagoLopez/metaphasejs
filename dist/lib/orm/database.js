@@ -1,6 +1,6 @@
 "use strict";
+//todo: usar whatg-fetch en lugar de fetch para compatibilidad navegador (?)
 Object.defineProperty(exports, "__esModule", { value: true });
-//todo: usar whatg-fetch en lugar de fetch para compatibilidad navegador
 var sql = require('sql.js');
 var yago_logger_1 = require("./yago.logger");
 var FileSaver = require('file-saver');
@@ -17,8 +17,9 @@ exports.db.__proto__.runQuery = function (query) {
     yago_logger_1.logQuery(queryString, 'query');
     return exports.db.run(queryString);
 };
-exports.db.__proto__.execQuery = function (query) {
-    yago_logger_1.logQuery(query.toString(), 'query');
+exports.db.__proto__.execQuery = function (query, useLogger) {
+    if (useLogger === void 0) { useLogger = true; }
+    useLogger && yago_logger_1.logQuery(query.toString(), 'query');
     return exports.db.getResults(exports.db.prepare(query.toString()));
 };
 exports.db.__proto__.getResults = function (statement) {
@@ -34,13 +35,13 @@ exports.db.__proto__.hasTable = function (tableName) {
     return result && result.length > 0;
 };
 exports.db.__proto__.integrityCheck = function () {
-    return exports.db.execQuery('PRAGMA integrity_check');
+    return exports.db.execQuery('PRAGMA integrity_check', false);
 };
 exports.db.__proto__.getSchema = function () {
     return exports.db.execQuery('SELECT "name", "sql" FROM "sqlite_master" WHERE type="table"');
 };
 exports.db.__proto__.getIdLastRecordInserted = function () {
-    var result = exports.db.execQuery('select last_insert_rowid()');
+    var result = exports.db.execQuery('SELECT last_insert_rowid()', false);
     return result && result[0]['last_insert_rowid()'];
 };
 exports.loadDbFromFile = function (fileNamePath, actionFn) {
@@ -57,8 +58,9 @@ exports.loadDbFromFile = function (fileNamePath, actionFn) {
             try {
                 exports.db.integrityCheck();
             }
-            catch (exception) {
-                alert("Database file not found: \"" + fileNamePath + "\"");
+            catch (error) {
+                console.error(error);
+                alert("Error loading db file: \"" + fileNamePath + "\"");
             }
             console.clear();
             var logFormat = 'background: cornflowerblue; color: white; font-weight: ';
@@ -69,7 +71,7 @@ exports.loadDbFromFile = function (fileNamePath, actionFn) {
     })
         .catch(function (error) {
         console.error(error);
-        alert('Failed to fetch database file');
+        alert('Error loading db file');
     });
 };
 exports.saveDbToFile = function (fileNamePath) {

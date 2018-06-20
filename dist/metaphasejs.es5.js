@@ -100,7 +100,7 @@ function log(msg, format) {
 // const urlParams = new URLSearchParams(window.location.search);
 // let urlLogParam = urlParams.get('log');
 
-//todo: usar whatg-fetch en lugar de fetch para compatibilidad navegador
+//todo: usar whatg-fetch en lugar de fetch para compatibilidad navegador (?)
 var sql = require('sql.js');
 var FileSaver = require('file-saver');
 /**
@@ -116,8 +116,9 @@ db.__proto__.runQuery = function (query) {
     logQuery(queryString, 'query');
     return db.run(queryString);
 };
-db.__proto__.execQuery = function (query) {
-    logQuery(query.toString(), 'query');
+db.__proto__.execQuery = function (query, useLogger) {
+    if (useLogger === void 0) { useLogger = true; }
+    useLogger && logQuery(query.toString(), 'query');
     return db.getResults(db.prepare(query.toString()));
 };
 db.__proto__.getResults = function (statement) {
@@ -133,13 +134,13 @@ db.__proto__.hasTable = function (tableName) {
     return result && result.length > 0;
 };
 db.__proto__.integrityCheck = function () {
-    return db.execQuery('PRAGMA integrity_check');
+    return db.execQuery('PRAGMA integrity_check', false);
 };
 db.__proto__.getSchema = function () {
     return db.execQuery('SELECT "name", "sql" FROM "sqlite_master" WHERE type="table"');
 };
 db.__proto__.getIdLastRecordInserted = function () {
-    var result = db.execQuery('select last_insert_rowid()');
+    var result = db.execQuery('SELECT last_insert_rowid()', false);
     return result && result[0]['last_insert_rowid()'];
 };
 var loadDbFromFile = function (fileNamePath, actionFn) {
@@ -156,8 +157,9 @@ var loadDbFromFile = function (fileNamePath, actionFn) {
             try {
                 db.integrityCheck();
             }
-            catch (exception) {
-                alert("Database file not found: \"" + fileNamePath + "\"");
+            catch (error) {
+                console.error(error);
+                alert("Error loading db file: \"" + fileNamePath + "\"");
             }
             console.clear();
             var logFormat = 'background: cornflowerblue; color: white; font-weight: ';
@@ -168,7 +170,7 @@ var loadDbFromFile = function (fileNamePath, actionFn) {
     })
         .catch(function (error) {
         console.error(error);
-        alert('Failed to fetch database file');
+        alert('Error loading db file');
     });
 };
 var saveDbToFile = function (fileNamePath) {

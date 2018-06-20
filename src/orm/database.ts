@@ -105,8 +105,8 @@ db.__proto__.runQuery = (query: QueryBuilder | string): any => {
   return db.run(queryString);
 };
 
-db.__proto__.execQuery = (query: QueryBuilder | string): Object[] => {
-  logQuery(query.toString(), 'query');
+db.__proto__.execQuery = (query: QueryBuilder | string, useLogger: boolean = true): Object[] => {
+  useLogger && logQuery(query.toString(), 'query');
   return db.getResults( db.prepare(query.toString()) );
 };
 
@@ -125,7 +125,7 @@ db.__proto__.hasTable = (tableName: string): boolean => {
 };
 
 db.__proto__.integrityCheck = (): Object[] => {
-  return db.execQuery('PRAGMA integrity_check')
+  return db.execQuery('PRAGMA integrity_check', false);
 };
 
 db.__proto__.getSchema = () => {
@@ -133,7 +133,7 @@ db.__proto__.getSchema = () => {
 };
 
 db.__proto__.getIdLastRecordInserted = (): number => {
-  const result = db.execQuery('select last_insert_rowid()');
+  const result = db.execQuery('SELECT last_insert_rowid()', false);
   return result && result[0]['last_insert_rowid()'];
 };
 

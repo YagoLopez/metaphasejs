@@ -39,15 +39,26 @@ yarn / npm test
 - [Jest Report](https://yagolopez.js.org/metaphasejs/coverage/lcov-report/index.html)
 - [Coveralls Report](https://coveralls.io/github/YagoLopez/metaphasejs)
 
-## Notes
+## Contributing
 
+1. Fork it
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+## Caveats
+
+- **IMPORTANT**: at this moment MetaphaseJS is not totally compatible with create-react-app (CRA) . The use of `prototype.name` breaks the compiled code. The `uglifying` process has to be made by hand with an *ad hoc* script. The `Uglifying` process has to avoid to *mangle* funcion names with the option `mangle: {keep_fnames: true}`. Open an issue for more information. Pull requests are welcome.
 - At this moment there are not polyfills for old browsers, but there will be in the future.
 - If Typescript and decorators are used, its configuration file `tsconfig.json` must have:
   - `experimentalDecorators = true`
-
   - `emitDecoratorMetadata = true`
-
   - If flag `strict = true` is used, model properties (columns in db) must be initialized with values
 
+## License
+
+MIT
 
 <p align="center"><a href="#">Back to top</a> ↑</p>
+

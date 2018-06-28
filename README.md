@@ -49,9 +49,9 @@ yarn / npm test
 
 ## Caveats
 
-- **IMPORTANT**: at this moment MetaphaseJS is not totally compatible with create-react-app (CRA) . The use of `prototype.name` breaks the compiled code. The `uglifying` process has to be made by hand with an *ad hoc* script. The `Uglifying` process has to avoid to *mangle* funcion names with the option `mangle: {keep_fnames: true}`. Open an issue for more information. Pull requests are welcome.
-- At this moment there are not polyfills for old browsers, but there will be in the future.
-- If Typescript and decorators are used, its configuration file `tsconfig.json` must have:
+- **IMPORTANT**: at this moment MetaphaseJS is not totally compatible with create-react-app (CRA) . The use of `constructor.name` breaks the compiled code by the CRA build script. The **uglifying process** has to be made with an *ad hoc* script called `build.js`. This script avoids to *mangle* funcion names using the option `mangle: {keep_fnames: true}`. Open an issue for more information. Pull requests are welcome.
+- At this moment there are not **polyfills** for old browsers, but there will be in the future.
+- If **Typescript** and **decorators** are used, its configuration file `tsconfig.json` must have:
   - `experimentalDecorators = true`
   - `emitDecoratorMetadata = true`
   - If flag `strict = true` is used, model properties (columns in db) must be initialized with values

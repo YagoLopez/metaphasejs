@@ -366,7 +366,7 @@ var Model = /** @class */ (function (_super) {
         return new modelClass(pojo);
     };
     Model.prototype.isSaved = function () {
-        return this.id !== undefined;
+        return this.id !== undefined$6;
     };
     Model.prototype.getForeignKeyColumnName = function () {
         return this.constructor.name.toLowerCase() + '_id';
@@ -458,7 +458,7 @@ var Model = /** @class */ (function (_super) {
         return model;
     };
     Model.prototype.hasChildren = function () {
-        return this.hasMany !== undefined;
+        return this.hasMany !== undefined$6;
     };
     return Model;
 }(Base));
@@ -768,7 +768,7 @@ var Reflect$1;
                 ? function (map, key) { return hasOwn.call(map, key); }
                 : function (map, key) { return key in map; },
             get: downLevel
-                ? function (map, key) { return hasOwn.call(map, key) ? map[key] : undefined; }
+                ? function (map, key) { return hasOwn.call(map, key) ? map[key] : undefined$a; }
                 : function (map, key) { return map[key]; },
         };
         // Load global or shim versions of Map, Set, and WeakMap
@@ -828,7 +828,7 @@ var Reflect$1;
                 if (!IsObject(attributes) && !IsUndefined(attributes) && !IsNull(attributes))
                     throw new TypeError();
                 if (IsNull(attributes))
-                    attributes = undefined;
+                    attributes = undefined$a;
                 propertyKey = ToPropertyKey(propertyKey);
                 return DecorateProperty(decorators, target, propertyKey, attributes);
             }
@@ -1273,14 +1273,14 @@ var Reflect$1;
             var targetMetadata = Metadata.get(O);
             if (IsUndefined(targetMetadata)) {
                 if (!Create)
-                    return undefined;
+                    return undefined$a;
                 targetMetadata = new _Map();
                 Metadata.set(O, targetMetadata);
             }
             var metadataMap = targetMetadata.get(P);
             if (IsUndefined(metadataMap)) {
                 if (!Create)
-                    return undefined;
+                    return undefined$a;
                 metadataMap = new _Map();
                 targetMetadata.set(P, metadataMap);
             }
@@ -1314,14 +1314,14 @@ var Reflect$1;
             var parent = OrdinaryGetPrototypeOf(O);
             if (!IsNull(parent))
                 return OrdinaryGetMetadata(MetadataKey, parent, P);
-            return undefined;
+            return undefined$a;
         }
         // 3.1.4.1 OrdinaryGetOwnMetadata(MetadataKey, O, P)
         // https://rbuckton.github.io/reflect-metadata/#ordinarygetownmetadata
         function OrdinaryGetOwnMetadata(MetadataKey, O, P) {
             var metadataMap = GetOrCreateMetadataMap(O, P, /*Create*/ false);
             if (IsUndefined(metadataMap))
-                return undefined;
+                return undefined$a;
             return metadataMap.get(MetadataKey);
         }
         // 3.1.5.1 OrdinaryDefineOwnMetadata(MetadataKey, MetadataValue, O, P)
@@ -1411,7 +1411,7 @@ var Reflect$1;
         // 6.1.1 The Undefined Type
         // https://tc39.github.io/ecma262/#sec-ecmascript-language-types-undefined-type
         function IsUndefined(x) {
-            return x === undefined;
+            return x === undefined$a;
         }
         // 6.1.2 The Null Type
         // https://tc39.github.io/ecma262/#sec-ecmascript-language-types-null-type
@@ -1443,7 +1443,7 @@ var Reflect$1;
             }
             var hint = PreferredType === 3 /* String */ ? "string" : PreferredType === 5 /* Number */ ? "number" : "default";
             var exoticToPrim = GetMethod(input, toPrimitiveSymbol);
-            if (exoticToPrim !== undefined) {
+            if (exoticToPrim !== undefined$a) {
                 var result = exoticToPrim.call(input, hint);
                 if (IsObject(result))
                     throw new TypeError();
@@ -1540,8 +1540,8 @@ var Reflect$1;
         // https://tc39.github.io/ecma262/#sec-getmethod
         function GetMethod(V, P) {
             var func = V[P];
-            if (func === undefined || func === null)
-                return undefined;
+            if (func === undefined$a || func === null)
+                return undefined$a;
             if (!IsCallable(func))
                 throw new TypeError();
             return func;
@@ -1634,7 +1634,7 @@ var Reflect$1;
                         }
                         return { value: result, done: false };
                     }
-                    return { value: undefined, done: true };
+                    return { value: undefined$a, done: true };
                 };
                 MapIterator.prototype.throw = function (error) {
                     if (this._index >= 0) {
@@ -1669,7 +1669,7 @@ var Reflect$1;
                 Map.prototype.has = function (key) { return this._find(key, /*insert*/ false) >= 0; };
                 Map.prototype.get = function (key) {
                     var index = this._find(key, /*insert*/ false);
-                    return index >= 0 ? this._values[index] : undefined;
+                    return index >= 0 ? this._values[index] : undefined$a;
                 };
                 Map.prototype.set = function (key, value) {
                     var index = this._find(key, /*insert*/ true);
@@ -1712,7 +1712,7 @@ var Reflect$1;
                     if (this._cacheIndex < 0 && insert) {
                         this._cacheIndex = this._keys.length;
                         this._keys.push(key);
-                        this._values.push(undefined);
+                        this._values.push(undefined$a);
                     }
                     return this._cacheIndex;
                 };
@@ -1762,11 +1762,11 @@ var Reflect$1;
                 }
                 WeakMap.prototype.has = function (target) {
                     var table = GetOrCreateWeakMapTable(target, /*create*/ false);
-                    return table !== undefined ? HashMap.has(table, this._key) : false;
+                    return table !== undefined$a ? HashMap.has(table, this._key) : false;
                 };
                 WeakMap.prototype.get = function (target) {
                     var table = GetOrCreateWeakMapTable(target, /*create*/ false);
-                    return table !== undefined ? HashMap.get(table, this._key) : undefined;
+                    return table !== undefined$a ? HashMap.get(table, this._key) : undefined$a;
                 };
                 WeakMap.prototype.set = function (target, value) {
                     var table = GetOrCreateWeakMapTable(target, /*create*/ true);
@@ -1775,7 +1775,7 @@ var Reflect$1;
                 };
                 WeakMap.prototype.delete = function (target) {
                     var table = GetOrCreateWeakMapTable(target, /*create*/ false);
-                    return table !== undefined ? delete table[this._key] : false;
+                    return table !== undefined$a ? delete table[this._key] : false;
                 };
                 WeakMap.prototype.clear = function () {
                     // NOTE: not a real clear, just makes the previous data unreachable
@@ -1794,7 +1794,7 @@ var Reflect$1;
             function GetOrCreateWeakMapTable(target, create) {
                 if (!hasOwn.call(target, rootKey)) {
                     if (!create)
-                        return undefined;
+                        return undefined$a;
                     Object.defineProperty(target, rootKey, { value: HashMap.create() });
                 }
                 return target[rootKey];
@@ -1833,7 +1833,7 @@ var Reflect$1;
         }
         // uses a heuristic used by v8 and chakra to force an object into dictionary mode.
         function MakeDictionary(obj) {
-            obj.__ = undefined;
+            obj.__ = undefined$a;
             delete obj.__;
             return obj;
         }

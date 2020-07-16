@@ -1032,20 +1032,27 @@ yarn / npm test
 				<li><a href="https://yagolopez.js.org/metaphasejs/coverage/lcov-report/index.html">Jest Report</a></li>
 				<li><a href="https://coveralls.io/github/YagoLopez/metaphasejs">Coveralls Report</a></li>
 			</ul>
-			<h2 id="notes">Notes</h2>
+			<h2 id="contributing">Contributing</h2>
+			<ol>
+				<li>Fork it</li>
+				<li>Create your feature branch: <code>git checkout -b my-new-feature</code></li>
+				<li>Commit your changes: <code>git commit -am &#39;Add some feature&#39;</code></li>
+				<li>Push to the branch: <code>git push origin my-new-feature</code></li>
+				<li>Submit a pull request :D</li>
+			</ol>
+			<h2 id="caveats">Caveats</h2>
 			<ul>
-				<li>At this moment there are not polyfills for old browsers, but there will be in the future.</li>
-				<li><p>If Typescript and decorators are used, its configuration file <code>tsconfig.json</code> must have:</p>
-					<ul>
-						<li><p><code>experimentalDecorators = true</code></p>
-						</li>
-						<li><p><code>emitDecoratorMetadata = true</code></p>
-						</li>
-						<li><p>If flag <code>strict = true</code> is used, model properties (columns in db) must be initialized with values</p>
-						</li>
+				<li><strong>IMPORTANT</strong>: at this moment MetaphaseJS is not totally compatible with create-react-app (CRA) . The use of <code>constructor.name</code> breaks the compiled code by the CRA build script. The <strong>uglifying process</strong> has to be made with an <em>ad hoc</em> script called <code>build.js</code>. This script avoids to <em>mangle</em> funcion names using the option <code>mangle: {keep_fnames: true}</code>. Open an issue for more information. Pull requests are welcome.</li>
+				<li>At this moment there are not <strong>polyfills</strong> for old browsers, but there will be in the future.</li>
+				<li>If <strong>Typescript</strong> and <strong>decorators</strong> are used, its configuration file <code>tsconfig.json</code> must have:<ul>
+						<li><code>experimentalDecorators = true</code></li>
+						<li><code>emitDecoratorMetadata = true</code></li>
+						<li>If flag <code>strict = true</code> is used, model properties (columns in db) must be initialized with values</li>
 					</ul>
 				</li>
 			</ul>
+			<h2 id="license">License</h2>
+			<p>MIT</p>
 			<p align="center"><a href="#">Back to top</a> ↑</p>
 		</div>
 		<div style="position:relative;"><a name="typedoc-main-index" class="tsd-anchor"></a></div>
@@ -1122,7 +1129,7 @@ yarn / npm test
 				<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>STATE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;false&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L9">orm/yago.logger.ts:9</a></li>
+						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L9">orm/yago.logger.ts:9</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1143,7 +1150,7 @@ yarn / npm test
 				<div class="tsd-signature tsd-kind-icon">File<wbr>Saver<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;file-saver&#x27;)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/database.ts#L6">orm/database.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/database.ts#L6">orm/database.ts:6</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1153,7 +1160,7 @@ yarn / npm test
 				<div class="tsd-signature tsd-kind-icon">SQL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/database.ts#L8">orm/database.ts:8</a></li>
+						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/database.ts#L8">orm/database.ts:8</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1163,7 +1170,7 @@ yarn / npm test
 				<div class="tsd-signature tsd-kind-icon">knex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;knex&#x27;)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/query.builder.ts#L1">orm/query.builder.ts:1</a></li>
+						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/query.builder.ts#L1">orm/query.builder.ts:1</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1173,7 +1180,7 @@ yarn / npm test
 				<div class="tsd-signature tsd-kind-icon">query<wbr>Builder<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/query.builder.ts#L5">orm/query.builder.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/query.builder.ts#L5">orm/query.builder.ts:5</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1183,7 +1190,7 @@ yarn / npm test
 				<div class="tsd-signature tsd-kind-icon">sql<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;sql.js&#x27;)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/database.ts#L3">orm/database.ts:3</a></li>
+						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/database.ts#L3">orm/database.ts:3</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1193,7 +1200,7 @@ yarn / npm test
 				<div class="tsd-signature tsd-kind-icon">url<wbr>Log<wbr>Param<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;getUrlParameter(&#x27;logger&#x27;)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L42">orm/yago.logger.ts:42</a></li>
+						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L42">orm/yago.logger.ts:42</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1210,7 +1217,7 @@ yarn / npm test
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/decorators.ts#L9">orm/decorators.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/decorators.ts#L9">orm/decorators.ts:9</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1233,7 +1240,7 @@ yarn / npm test
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L49">orm/yago.logger.ts:49</a></li>
+								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L49">orm/yago.logger.ts:49</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1256,7 +1263,7 @@ yarn / npm test
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/decorators.ts#L57">orm/decorators.ts:57</a></li>
+								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/decorators.ts#L57">orm/decorators.ts:57</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1296,7 +1303,7 @@ yarn / npm test
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L16">orm/yago.logger.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L16">orm/yago.logger.ts:16</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1324,7 +1331,7 @@ yarn / npm test
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/database.ts#L140">orm/database.ts:140</a></li>
+								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/database.ts#L140">orm/database.ts:140</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1350,7 +1357,7 @@ yarn / npm test
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L96">orm/yago.logger.ts:96</a></li>
+								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L96">orm/yago.logger.ts:96</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1383,7 +1390,7 @@ yarn / npm test
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L78">orm/yago.logger.ts:78</a></li>
+								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L78">orm/yago.logger.ts:78</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1418,7 +1425,7 @@ yarn / npm test
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/database.ts#L170">orm/database.ts:170</a></li>
+								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/database.ts#L170">orm/database.ts:170</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1441,7 +1448,7 @@ yarn / npm test
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L30">orm/yago.logger.ts:30</a></li>
+								<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L30">orm/yago.logger.ts:30</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1474,7 +1481,7 @@ yarn / npm test
 				<div class="tsd-signature tsd-kind-icon">LOG_<wbr>FORMAT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L65">orm/yago.logger.ts:65</a></li>
+						<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L65">orm/yago.logger.ts:65</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1494,7 +1501,7 @@ yarn / npm test
 					<div class="tsd-signature tsd-kind-icon">BG_<wbr>YELLOW<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;background-color: yellow&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L68">orm/yago.logger.ts:68</a></li>
+							<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L68">orm/yago.logger.ts:68</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1504,7 +1511,7 @@ yarn / npm test
 					<div class="tsd-signature tsd-kind-icon">BLUE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;background: ghostwhite; color: cornflowerblue; font-size: 12px; font-weight: bold&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L66">orm/yago.logger.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L66">orm/yago.logger.ts:66</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1514,7 +1521,7 @@ yarn / npm test
 					<div class="tsd-signature tsd-kind-icon">ORANGE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;color: orange&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/51d24c3/src/orm/yago.logger.ts#L67">orm/yago.logger.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/YagoLopez/metaphasejs/blob/068036c/src/orm/yago.logger.ts#L67">orm/yago.logger.ts:67</a></li>
 						</ul>
 					</aside>
 				</section>

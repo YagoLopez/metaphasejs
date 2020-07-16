@@ -4,6 +4,10 @@
 
 ![NPM package](https://nodei.co/npm/metaphasejs.png)
 
+
+[![Repository stats](https://github-readme-stats.vercel.app/api?username=YagoLopez&hide=["contribs"])](https://github.com/anuraghazra/github-readme-stats)
+
+
 # MetaphaseJS
 
 Super easy, efficient and agnostic state management for Javascript
